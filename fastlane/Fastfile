@@ -1,0 +1,20 @@
+default_platform :ios
+
+platform :ios do
+    desc "Translator"
+    lane :distribute do
+        build_ios_app(
+          scheme: "Translator",
+          workspace: "Translator.xcworkspace",
+          export_method: "development"
+        )
+
+        firebase_app_distribution(
+            app: "translator-33ca9",
+            testers: "igorlnvch@gmail.com, alexandr.mihalkevich@gmail.com@gmail.com",
+            release_notes: "Initial project",
+            firebase_cli_path: "/usr/local/bin/firebase"
+        )
+
+    end
+end
