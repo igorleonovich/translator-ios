@@ -1,5 +1,5 @@
 //
-//  KeyboardTranslationViewController.swift
+//  ImageTranslationViewController.swift
 //  Translator
 //
 //  Created by Igor Leonovich on 2/27/20.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-class KeyboardTranslationViewController: BaseViewController {
+class ImageTranslationViewController: BaseViewController {
     
 }

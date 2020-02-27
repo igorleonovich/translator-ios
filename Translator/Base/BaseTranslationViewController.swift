@@ -6,4 +6,9 @@
 //  Copyright © 2020 IELIS. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class BaseTranslationViewController: BaseViewController {
+    
+    
+}
