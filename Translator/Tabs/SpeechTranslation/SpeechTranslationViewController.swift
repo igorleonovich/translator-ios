@@ -15,6 +15,15 @@ class SpeechTranslationViewController: BaseTranslationViewController, MDVTabbabl
         view.backgroundColor = .white
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let label = UILabel(frame: view.frame)
+        label.text = "Speech Translation"
+        label.textAlignment = .center
+        view.addSubview(label)
+        label.center = view.center
+    }
+    
     func mdvTabBarItem() -> UITabBarItem {
         let item = UITabBarItem()
         item.selectedImage = UIImage.checkmark

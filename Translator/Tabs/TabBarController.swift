@@ -46,10 +46,10 @@ extension TabBarController: MDVTabBarControllerDataSource {
     }
     
     func tabBarAnimator() -> MDVTabBarAnimatable {
-        return MDVSlidingOverlayAnimator(withTabBarColors: [UIColor.red,
-                                                            UIColor.blue,
-                                                            UIColor.green,
-                                                            UIColor.yellow,
-                                                            UIColor.cyan])
+        return MDVSlidingOverlayAnimator(withTabBarColors: [UIColor.white,
+                                                            UIColor.white,
+                                                            UIColor.white,
+                                                            UIColor.white,
+                                                            UIColor.white])
     }
 }
