@@ -8,9 +8,17 @@
 
 import UIKit
 
-class SpeechTranslationViewController: BaseTranslationViewController {
+class SpeechTranslationViewController: BaseTranslationViewController, MDVTabbableViewController {
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+    }
+    
+    func mdvTabBarItem() -> UITabBarItem {
+        let item = UITabBarItem()
+        item.selectedImage = UIImage.checkmark
+        item.image = UIImage.checkmark
+        return item
     }
 }

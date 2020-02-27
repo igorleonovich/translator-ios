@@ -8,6 +8,12 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, MDVTabbableViewController {
     
+    func mdvTabBarItem() -> UITabBarItem {
+        let item = UITabBarItem()
+        item.selectedImage = UIImage.checkmark
+        item.image = UIImage.checkmark
+        return item
+    }
 }

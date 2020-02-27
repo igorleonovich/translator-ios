@@ -8,27 +8,48 @@
 
 import UIKit
 
-class TabBarController: UITabBarController {
+class TabBarController: MDVTabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        mdvTabBarControllerDataSource = self
+        mdvTabBarControllerDelegate = self
+    }
+}
 
-        let speechTranslationVC = SpeechTranslationViewController()
-        speechTranslationVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
-        speechTranslationVC.tabBarItem.title = ""
+extension TabBarController: MDVTabBarControllerDelegate {
+    func tabBar(_ tabBarController: MDVTabBarController, didSelectIndex index: Int) {
+        
+    }
+}
 
-        let textTranslationVC = TextTranslationViewController()
-        textTranslationVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
-        
-        let imageTranslationVC = ImageTranslationViewController()
-        imageTranslationVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 2)
-        
-        let keyboardTranslationVC = KeyboardTranslationViewController()
-        keyboardTranslationVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 3)
-        
-        let settingsVC = SettingsViewController()
-        settingsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 4)
 
-        viewControllers = [speechTranslationVC, textTranslationVC, imageTranslationVC, keyboardTranslationVC, settingsVC]
+extension TabBarController: MDVTabBarControllerDataSource {
+    func tabBarControllerInitialIndex() -> Int {
+        return 3
+    }
+    
+    func tabBarControllerViewControllers() -> [MDVTabbableViewController] {
+        return [SpeechTranslationViewController(),
+        TextTranslationViewController(),
+        ImageTranslationViewController(),
+        KeyboardTranslationViewController(),
+        SettingsViewController()]
+    }
+    
+    func tabBarHeight() -> CGFloat {
+        return 40
+    }
+    
+    func tabBarBackgroundColor() -> UIColor {
+        return .white
+    }
+    
+    func tabBarAnimator() -> MDVTabBarAnimatable {
+        return MDVSlidingOverlayAnimator(withTabBarColors: [UIColor.red,
+                                                            UIColor.blue,
+                                                            UIColor.green,
+                                                            UIColor.yellow,
+                                                            UIColor.cyan])
     }
 }

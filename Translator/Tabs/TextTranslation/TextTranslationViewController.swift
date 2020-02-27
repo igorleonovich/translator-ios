@@ -8,6 +8,12 @@
 
 import UIKit
 
-class TextTranslationViewController: BaseTranslationViewController {
+class TextTranslationViewController: BaseTranslationViewController, MDVTabbableViewController {
     
+    func mdvTabBarItem() -> UITabBarItem {
+        let item = UITabBarItem()
+        item.selectedImage = UIImage.checkmark
+        item.image = UIImage.checkmark
+        return item
+    }
 }
