@@ -11,9 +11,8 @@ platform :ios do
 
         firebase_app_distribution(
             app: "translator-33ca9",
-            testers: "igorlnvch@gmail.com, alexandr.mihalkevich@gmail.com@gmail.com",
-            release_notes: "Initial project",
-            firebase_cli_path: "/usr/local/bin/firebase"
+            testers: "igorlnvch@gmail.com, alexandr.mihalkevich@gmail.com",
+            release_notes: "Initial project"
         )
 
     end
