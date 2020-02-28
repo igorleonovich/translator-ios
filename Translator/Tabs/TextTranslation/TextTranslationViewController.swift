@@ -10,19 +10,41 @@ import UIKit
 
 class TextTranslationViewController: BaseTranslationViewController, MDVTabbableViewController {
     
+    var textField: UITextField!
+    var button: UIButton!
+    var label: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        translate()
+        
+        textField = UITextField()
+        textField.placeholder = "English text"
+        textField.textAlignment = .center
+        
+        button = UIButton(type: .system)
+        button.setTitle("Translate", for: .normal)
+        button.addTarget(self, action: #selector(translate), for: .touchUpInside)
+        
+        label = UILabel()
+        label.textAlignment = .center
+        
+        let stackView = UIStackView(arrangedSubviews: [textField, button, label])
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        view.addSubview(stackView)
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor).isActive = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let label = UILabel(frame: view.frame)
-        label.text = "Text Translation"
-        label.textAlignment = .center
-        view.addSubview(label)
-        label.center = view.center
+        
+        
     }
     
     func mdvTabBarItem() -> UITabBarItem {
@@ -32,11 +54,15 @@ class TextTranslationViewController: BaseTranslationViewController, MDVTabbableV
         return item
     }
     
-    func translate() {
+    @objc func translate() {
         /// Translates a text.
-        SwiftGoogleTranslate.shared.translate("Hello!", "ru", "en") { (text, error) in
+        SwiftGoogleTranslate.shared.translate(textField.text!, "ru", "en") { (text, error) in
             if let t = text {
                 print(t)
+                DispatchQueue.main.async {
+                    self.label.text = t
+                    self.textField.resignFirstResponder()
+                }
             }
         }
         
