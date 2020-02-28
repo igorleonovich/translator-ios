@@ -6,5 +6,6 @@ target 'Translator' do
   use_frameworks!
 
   pod 'Moya', '~> 14.0'
+  pod 'SwiftGoogleTranslate'
 
 end
