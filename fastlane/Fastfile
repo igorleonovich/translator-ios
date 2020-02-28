@@ -10,7 +10,7 @@ platform :ios do
         )
 
         firebase_app_distribution(
-            app: "translator-33ca9",
+            app: "1:990997999049:ios:ba4ca68e1c4338abc00c18",
             testers: "igorlnvch@gmail.com, alexandr.mihalkevich@gmail.com",
             release_notes: "Initial project"
         )
