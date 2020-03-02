@@ -43,8 +43,6 @@ class TextTranslationViewController: BaseTranslationViewController, MDVTabbableV
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        
     }
     
     func mdvTabBarItem() -> UITabBarItem {

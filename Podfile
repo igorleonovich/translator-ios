@@ -7,5 +7,6 @@ target 'Translator' do
 
   pod 'Moya', '~> 14.0'
   pod 'SwiftGoogleTranslate'
+  pod 'FlagKit'
 
 end

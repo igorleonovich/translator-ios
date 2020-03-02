@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="Translator" customModuleProvider="target">
+            <connections>
+                <outlet property="cameraButton" destination="PMb-Wc-O6c" id="ahf-qp-R5Q"/>
+                <outlet property="downLanguageImageView" destination="0EL-pd-Yuz" id="atG-Ym-afy"/>
+                <outlet property="offlineButton" destination="aIT-7x-yxy" id="uBG-Td-D1i"/>
+                <outlet property="settingsButton" destination="dXp-gZ-zV1" id="clH-zM-Xld"/>
+                <outlet property="upLanguageImageView" destination="gR0-oa-rBW" id="Cqt-aY-hUw"/>
+                <outlet property="view" destination="iN0-l3-epB" id="NY3-td-7nk"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RU" translatesAutoresizingMaskIntoConstraints="NO" id="gR0-oa-rBW">
+                    <rect key="frame" x="135" y="20" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Jzf-ka-Q5x"/>
+                        <constraint firstAttribute="width" constant="50" id="nuq-Gi-lbj"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="US" translatesAutoresizingMaskIntoConstraints="NO" id="0EL-pd-Yuz">
+                    <rect key="frame" x="135" y="498" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Fyy-1a-fT7"/>
+                        <constraint firstAttribute="width" constant="50" id="u96-yK-Uy1"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIT-7x-yxy" customClass="CustomButton" customModule="Translator" customModuleProvider="target">
+                    <rect key="frame" x="20" y="29" width="32" height="32"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="bcb-DK-tWj"/>
+                        <constraint firstAttribute="width" constant="32" id="fxv-py-wer"/>
+                    </constraints>
+                    <state key="normal" image="airplane" catalog="system"/>
+                    <connections>
+                        <action selector="pressOfflineButton:" destination="-1" eventType="touchUpInside" id="FSr-d9-jeV"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PMb-Wc-O6c" customClass="CustomButton" customModule="Translator" customModuleProvider="target">
+                    <rect key="frame" x="268" y="29" width="32" height="32"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="AGk-Wb-4FW"/>
+                        <constraint firstAttribute="width" constant="32" id="uA7-hB-7Zs"/>
+                    </constraints>
+                    <state key="normal" image="camera.fill" catalog="system"/>
+                    <connections>
+                        <action selector="pressCameraButton:" destination="-1" eventType="touchUpInside" id="LHD-wm-zYY"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvo-bd-sQC" customClass="CustomButton" customModule="Translator" customModuleProvider="target">
+                    <rect key="frame" x="110" y="234" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="4Cv-Mu-cJ5"/>
+                        <constraint firstAttribute="width" constant="100" id="gYR-G7-SSf"/>
+                    </constraints>
+                    <state key="normal" image="mic.fill" catalog="system"/>
+                </button>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXp-gZ-zV1" customClass="CustomButton" customModule="Translator" customModuleProvider="target">
+                    <rect key="frame" x="20" y="507" width="32" height="32"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="Bfv-Qr-JDy"/>
+                        <constraint firstAttribute="height" constant="32" id="djt-7a-rKi"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                    <state key="normal" image="gear" catalog="system"/>
+                    <connections>
+                        <action selector="pressSettingsButton:" destination="-1" eventType="touchUpInside" id="AdM-LN-XCr"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="aIT-7x-yxy" firstAttribute="centerY" secondItem="gR0-oa-rBW" secondAttribute="centerY" id="9jk-0Z-QrM"/>
+                <constraint firstItem="PMb-Wc-O6c" firstAttribute="centerY" secondItem="gR0-oa-rBW" secondAttribute="centerY" id="F4V-eq-iAA"/>
+                <constraint firstItem="jvo-bd-sQC" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="Fhu-aS-uJV"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="0EL-pd-Yuz" secondAttribute="bottom" constant="20" id="Hc1-Oh-P94"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="PMb-Wc-O6c" secondAttribute="trailing" constant="20" id="Poi-hN-7Xe"/>
+                <constraint firstItem="jvo-bd-sQC" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Scd-8t-DBE"/>
+                <constraint firstItem="dXp-gZ-zV1" firstAttribute="centerY" secondItem="0EL-pd-Yuz" secondAttribute="centerY" id="StH-cA-r35"/>
+                <constraint firstItem="gR0-oa-rBW" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Vh3-BH-sOL"/>
+                <constraint firstItem="gR0-oa-rBW" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="bnc-1d-bKc"/>
+                <constraint firstItem="dXp-gZ-zV1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="l8O-YL-JAM"/>
+                <constraint firstItem="0EL-pd-Yuz" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="wDn-bm-XzM"/>
+                <constraint firstItem="aIT-7x-yxy" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="yFw-E9-krH"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="138.75" y="97.183098591549296"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="RU" width="21" height="15"/>
+        <image name="US" width="21" height="15"/>
+        <image name="airplane" catalog="system" width="64" height="56"/>
+        <image name="camera.fill" catalog="system" width="64" height="48"/>
+        <image name="gear" catalog="system" width="64" height="58"/>
+        <image name="mic.fill" catalog="system" width="54" height="64"/>
+    </resources>
+</document>

@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.0.2)
+  - FlagKit (2.2)
   - Moya (14.0.0):
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
@@ -7,20 +8,23 @@ PODS:
   - SwiftGoogleTranslate (0.2.1)
 
 DEPENDENCIES:
+  - FlagKit
   - Moya (~> 14.0)
   - SwiftGoogleTranslate
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - FlagKit
     - Moya
     - SwiftGoogleTranslate
 
 SPEC CHECKSUMS:
   Alamofire: 3ba7a4db18b4f62c4a1c0e1cb39d7f3d52e10ada
+  FlagKit: eca7dc89064b0c986302ba9acefad1bf80a435b1
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   SwiftGoogleTranslate: 96960d3548e800e15b347518afca546d2edc8519
 
-PODFILE CHECKSUM: 6120aab7706ded751fcb9120370cbe4a97536ab9
+PODFILE CHECKSUM: b4f1bc4814c323ceee9010b72acf71668d06d88c
 
 COCOAPODS: 1.8.4

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B31E50C240D3C5B0080B0AE /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B31E50B240D3C5B0080B0AE /* UIColor+Extensions.swift */; };
+		0B31E50E240D467E0080B0AE /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B31E50D240D467E0080B0AE /* CustomButton.swift */; };
 		0B3F2A6D2407DA1700BCAC88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3F2A6C2407DA1700BCAC88 /* AppDelegate.swift */; };
 		0B3F2A6F2407DA1700BCAC88 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3F2A6E2407DA1700BCAC88 /* SceneDelegate.swift */; };
 		0B3F2A762407DA1800BCAC88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B3F2A752407DA1800BCAC88 /* Assets.xcassets */; };
@@ -31,10 +33,17 @@
 		0B7408BE24085ACA00ECC102 /* MDVTabBarItemable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7408A824085ACA00ECC102 /* MDVTabBarItemable.swift */; };
 		0B7408BF24085ACA00ECC102 /* MDVTabbableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7408A924085ACA00ECC102 /* MDVTabbableViewController.swift */; };
 		0B7408C62409C5A400ECC102 /* SwiftGoogleTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7408C52409C5A400ECC102 /* SwiftGoogleTranslate.swift */; };
+		0B7408C9240C226600ECC102 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7408C8240C226600ECC102 /* MainViewController.swift */; };
+		0B7408CB240C256600ECC102 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7408CA240C256600ECC102 /* RootViewController.swift */; };
+		0B7408CE240C25AA00ECC102 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7408CD240C25AA00ECC102 /* UIViewController+Extensions.swift */; };
+		0B7408D2240C270000ECC102 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7408D1240C270000ECC102 /* MainViewController.xib */; };
+		0B7408D5240D14F300ECC102 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7408D4240D14F300ECC102 /* UIView+Extensions.swift */; };
 		0D537DC38426025B3D6297C5 /* Pods_Translator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD843D5FA36A96DB06F1ADF /* Pods_Translator.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B31E50B240D3C5B0080B0AE /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		0B31E50D240D467E0080B0AE /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		0B3F2A692407DA1700BCAC88 /* Translator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Translator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B3F2A6C2407DA1700BCAC88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B3F2A6E2407DA1700BCAC88 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +70,11 @@
 		0B7408A824085ACA00ECC102 /* MDVTabBarItemable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDVTabBarItemable.swift; sourceTree = "<group>"; };
 		0B7408A924085ACA00ECC102 /* MDVTabbableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDVTabbableViewController.swift; sourceTree = "<group>"; };
 		0B7408C52409C5A400ECC102 /* SwiftGoogleTranslate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGoogleTranslate.swift; sourceTree = "<group>"; };
+		0B7408C8240C226600ECC102 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		0B7408CA240C256600ECC102 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		0B7408CD240C25AA00ECC102 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		0B7408D1240C270000ECC102 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		0B7408D4240D14F300ECC102 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		303CFFA7FCB8F811455986A6 /* Pods-Translator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translator.debug.xcconfig"; path = "Target Support Files/Pods-Translator/Pods-Translator.debug.xcconfig"; sourceTree = "<group>"; };
 		4BD843D5FA36A96DB06F1ADF /* Pods_Translator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Translator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD254710EE1F9DF8B86CC33 /* Pods-Translator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translator.release.xcconfig"; path = "Target Support Files/Pods-Translator/Pods-Translator.release.xcconfig"; sourceTree = "<group>"; };
@@ -100,6 +114,9 @@
 		0B3F2A6B2407DA1700BCAC88 /* Translator */ = {
 			isa = PBXGroup;
 			children = (
+				0B7408D3240D14E200ECC102 /* UI */,
+				0B7408CC240C258200ECC102 /* Extensions */,
+				0B7408C7240C224800ECC102 /* Main */,
 				0B7408C42409C58100ECC102 /* TranslateEngine */,
 				0B74087824085A9600ECC102 /* CustomTabBarController */,
 				0B740865240810E900ECC102 /* Base */,
@@ -232,6 +249,34 @@
 			path = TranslateEngine;
 			sourceTree = "<group>";
 		};
+		0B7408C7240C224800ECC102 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				0B7408C8240C226600ECC102 /* MainViewController.swift */,
+				0B7408CA240C256600ECC102 /* RootViewController.swift */,
+				0B7408D1240C270000ECC102 /* MainViewController.xib */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		0B7408CC240C258200ECC102 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0B7408CD240C25AA00ECC102 /* UIViewController+Extensions.swift */,
+				0B31E50B240D3C5B0080B0AE /* UIColor+Extensions.swift */,
+				0B7408D4240D14F300ECC102 /* UIView+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0B7408D3240D14E200ECC102 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				0B31E50D240D467E0080B0AE /* CustomButton.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		6550BF414D93CE6A00194ED3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B3F2A792407DA1800BCAC88 /* LaunchScreen.storyboard in Resources */,
+				0B7408D2240C270000ECC102 /* MainViewController.xib in Resources */,
 				0B3F2A762407DA1800BCAC88 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,9 +410,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B74085B24080D7400ECC102 /* ImageTranslationViewController.swift in Sources */,
+				0B7408C9240C226600ECC102 /* MainViewController.swift in Sources */,
 				0B740868240810E900ECC102 /* BaseViewController.swift in Sources */,
 				0B3F2A6D2407DA1700BCAC88 /* AppDelegate.swift in Sources */,
+				0B31E50E240D467E0080B0AE /* CustomButton.swift in Sources */,
+				0B7408CE240C25AA00ECC102 /* UIViewController+Extensions.swift in Sources */,
 				0B74085F24080DC200ECC102 /* SettingsViewController.swift in Sources */,
+				0B7408D5240D14F300ECC102 /* UIView+Extensions.swift in Sources */,
 				0B7408BF24085ACA00ECC102 /* MDVTabbableViewController.swift in Sources */,
 				0B7408BE24085ACA00ECC102 /* MDVTabBarItemable.swift in Sources */,
 				0B3F2A6F2407DA1700BCAC88 /* SceneDelegate.swift in Sources */,
@@ -376,6 +426,7 @@
 				0B7408BC24085ACA00ECC102 /* MDVTabBarAnimatable.swift in Sources */,
 				0B7408B724085ACA00ECC102 /* MDVZoomAnimator.swift in Sources */,
 				0B74085D24080D9D00ECC102 /* KeyboardTranslationViewController.swift in Sources */,
+				0B7408CB240C256600ECC102 /* RootViewController.swift in Sources */,
 				0B7408C62409C5A400ECC102 /* SwiftGoogleTranslate.swift in Sources */,
 				0B74085724080D5200ECC102 /* TextTranslationViewController.swift in Sources */,
 				0B7408B324085ACA00ECC102 /* MDVTabBar.swift in Sources */,
@@ -384,6 +435,7 @@
 				0B7408B424085ACA00ECC102 /* MDVTabBarController.swift in Sources */,
 				0B74085924080D6200ECC102 /* SpeechTranslationViewController.swift in Sources */,
 				0B7408BB24085ACA00ECC102 /* MDVTabBarDataSource+Delegate.swift in Sources */,
+				0B31E50C240D3C5B0080B0AE /* UIColor+Extensions.swift in Sources */,
 				0B7408B824085ACA00ECC102 /* MDVUnderlineAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,7 +574,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 9TZZKGNZ6W;
 				INFOPLIST_FILE = Translator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -542,7 +594,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 9TZZKGNZ6W;
 				INFOPLIST_FILE = Translator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
