@@ -14,14 +14,18 @@ class CustomButton: UIButton {
     var selectedTintColor = UIColor.white
     var normalBackgroundColor = UIColor.white
     var selectedBackgroundColor = UIColor.Blue.DeepSkyBlue
+    var customButtonSubViewNormalColor = UIColor.Blue.LilyWhite
+    
+    @IBOutlet weak var customButtonSubView: CustomButtonSubView?
         
     override var isHighlighted: Bool {
         get {
             return false
         }
         set {
-            backgroundColor = newValue ? selectedBackgroundColor : normalBackgroundColor
             DispatchQueue.main.async {
+                self.backgroundColor = newValue ? self.selectedBackgroundColor : self.normalBackgroundColor
+                self.customButtonSubView?.backgroundColor = newValue ? self.selectedBackgroundColor : self.customButtonSubViewNormalColor
                 self.tintColor = newValue ? self.selectedTintColor : self.normalTintColor
             }
         }
@@ -47,5 +51,13 @@ class MicrophoneButton: CustomButton {
         normalBackgroundColor = UIColor.Blue.DeepSkyBlue
         selectedBackgroundColor = UIColor.Green.Lima
         super.awakeFromNib()
+    }
+}
+
+class CustomButtonSubView: UIView {
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        round()
     }
 }

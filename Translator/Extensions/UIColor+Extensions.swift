@@ -11,6 +11,7 @@ import UIKit
 extension UIColor {
     struct Blue {
         static let DeepSkyBlue = UIColor(red: 3, green: 180, blue: 255)
+        static let LilyWhite = UIColor(red: 230, green: 246, blue: 254)
     }
     struct Green {
         static let Lima = UIColor(red: 127, green: 184, blue: 32)

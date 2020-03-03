@@ -37,28 +37,39 @@
                         <constraint firstAttribute="width" constant="50" id="u96-yK-Uy1"/>
                     </constraints>
                 </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vRF-gR-MXB" customClass="CustomButtonSubView" customModule="Translator" customModuleProvider="target">
+                    <rect key="frame" x="18" y="23" width="44" height="44"/>
+                    <color key="backgroundColor" red="0.90196078431372551" green="0.96470588235294119" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIT-7x-yxy" customClass="CustomButton" customModule="Translator" customModuleProvider="target">
-                    <rect key="frame" x="20" y="29" width="32" height="32"/>
+                    <rect key="frame" x="20" y="25" width="40" height="40"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="32" id="bcb-DK-tWj"/>
-                        <constraint firstAttribute="width" constant="32" id="fxv-py-wer"/>
+                        <constraint firstAttribute="height" constant="40" id="bcb-DK-tWj"/>
+                        <constraint firstAttribute="width" constant="40" id="fxv-py-wer"/>
                     </constraints>
+                    <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                     <state key="normal" image="airplane" catalog="system"/>
                     <connections>
                         <action selector="pressOfflineButton:" destination="-1" eventType="touchUpInside" id="FSr-d9-jeV"/>
+                        <outlet property="customButtonSubView" destination="vRF-gR-MXB" id="ipc-EH-bar"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9f4-MD-tv9" customClass="CustomButtonSubView" customModule="Translator" customModuleProvider="target">
+                    <rect key="frame" x="258" y="23" width="44" height="44"/>
+                    <color key="backgroundColor" red="0.90196078430000004" green="0.96470588239999999" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PMb-Wc-O6c" customClass="CustomButton" customModule="Translator" customModuleProvider="target">
-                    <rect key="frame" x="268" y="29" width="32" height="32"/>
+                    <rect key="frame" x="260" y="25" width="40" height="40"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="32" id="AGk-Wb-4FW"/>
-                        <constraint firstAttribute="width" constant="32" id="uA7-hB-7Zs"/>
+                        <constraint firstAttribute="height" constant="40" id="AGk-Wb-4FW"/>
+                        <constraint firstAttribute="width" constant="40" id="uA7-hB-7Zs"/>
                     </constraints>
                     <state key="normal" image="camera.fill" catalog="system"/>
                     <connections>
                         <action selector="pressCameraButton:" destination="-1" eventType="touchUpInside" id="LHD-wm-zYY"/>
+                        <outlet property="customButtonSubView" destination="9f4-MD-tv9" id="89G-GZ-qYm"/>
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shj-lj-AeU">
@@ -77,37 +88,54 @@
                     <inset key="imageEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                     <state key="normal" image="mic.fill" catalog="system"/>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VVu-rO-tzA" customClass="CustomButtonSubView" customModule="Translator" customModuleProvider="target">
+                    <rect key="frame" x="18" y="501" width="44" height="44"/>
+                    <color key="backgroundColor" red="0.90196078430000004" green="0.96470588239999999" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXp-gZ-zV1" customClass="CustomButton" customModule="Translator" customModuleProvider="target">
-                    <rect key="frame" x="20" y="507" width="32" height="32"/>
+                    <rect key="frame" x="20" y="503" width="40" height="40"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="32" id="Bfv-Qr-JDy"/>
-                        <constraint firstAttribute="height" constant="32" id="djt-7a-rKi"/>
+                        <constraint firstAttribute="width" constant="40" id="Bfv-Qr-JDy"/>
+                        <constraint firstAttribute="height" constant="40" id="djt-7a-rKi"/>
                     </constraints>
                     <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                     <state key="normal" image="gear" catalog="system"/>
                     <connections>
                         <action selector="pressSettingsButton:" destination="-1" eventType="touchUpInside" id="AdM-LN-XCr"/>
+                        <outlet property="customButtonSubView" destination="VVu-rO-tzA" id="w1V-S8-q37"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="9f4-MD-tv9" firstAttribute="trailing" secondItem="PMb-Wc-O6c" secondAttribute="trailing" constant="2" id="0cK-bO-oSI"/>
+                <constraint firstItem="VVu-rO-tzA" firstAttribute="top" secondItem="dXp-gZ-zV1" secondAttribute="top" constant="-2" id="315-h4-Gd6"/>
                 <constraint firstItem="shj-lj-AeU" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="4UE-V0-kuQ"/>
+                <constraint firstItem="9f4-MD-tv9" firstAttribute="leading" secondItem="PMb-Wc-O6c" secondAttribute="leading" constant="-2" id="88h-6v-l0e"/>
                 <constraint firstItem="aIT-7x-yxy" firstAttribute="centerY" secondItem="gR0-oa-rBW" secondAttribute="centerY" id="9jk-0Z-QrM"/>
+                <constraint firstItem="vRF-gR-MXB" firstAttribute="trailing" secondItem="aIT-7x-yxy" secondAttribute="trailing" constant="2" id="C7M-02-8am"/>
+                <constraint firstItem="vRF-gR-MXB" firstAttribute="leading" secondItem="aIT-7x-yxy" secondAttribute="leading" constant="-2" id="EmR-vX-cwx"/>
                 <constraint firstItem="PMb-Wc-O6c" firstAttribute="centerY" secondItem="gR0-oa-rBW" secondAttribute="centerY" id="F4V-eq-iAA"/>
                 <constraint firstItem="jvo-bd-sQC" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="Fhu-aS-uJV"/>
+                <constraint firstItem="VVu-rO-tzA" firstAttribute="bottom" secondItem="dXp-gZ-zV1" secondAttribute="bottom" constant="2" id="FnT-Wo-OnA"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="0EL-pd-Yuz" secondAttribute="bottom" constant="20" id="Hc1-Oh-P94"/>
+                <constraint firstItem="VVu-rO-tzA" firstAttribute="leading" secondItem="dXp-gZ-zV1" secondAttribute="leading" constant="-2" id="IDD-eQ-ygi"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="PMb-Wc-O6c" secondAttribute="trailing" constant="20" id="Poi-hN-7Xe"/>
                 <constraint firstItem="jvo-bd-sQC" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Scd-8t-DBE"/>
                 <constraint firstItem="dXp-gZ-zV1" firstAttribute="centerY" secondItem="0EL-pd-Yuz" secondAttribute="centerY" id="StH-cA-r35"/>
                 <constraint firstItem="gR0-oa-rBW" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Vh3-BH-sOL"/>
+                <constraint firstItem="vRF-gR-MXB" firstAttribute="bottom" secondItem="aIT-7x-yxy" secondAttribute="bottom" constant="2" id="Zzn-6S-OHP"/>
                 <constraint firstItem="gR0-oa-rBW" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="bnc-1d-bKc"/>
+                <constraint firstItem="VVu-rO-tzA" firstAttribute="trailing" secondItem="dXp-gZ-zV1" secondAttribute="trailing" constant="2" id="fqc-Kx-cKH"/>
                 <constraint firstAttribute="trailing" secondItem="shj-lj-AeU" secondAttribute="trailing" id="hrc-eG-wQS"/>
+                <constraint firstItem="9f4-MD-tv9" firstAttribute="bottom" secondItem="PMb-Wc-O6c" secondAttribute="bottom" constant="2" id="kJV-Ea-QSD"/>
                 <constraint firstItem="dXp-gZ-zV1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="l8O-YL-JAM"/>
                 <constraint firstItem="shj-lj-AeU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lOw-aE-Wn5"/>
+                <constraint firstItem="vRF-gR-MXB" firstAttribute="top" secondItem="aIT-7x-yxy" secondAttribute="top" constant="-2" id="p94-JT-QfD"/>
                 <constraint firstItem="0EL-pd-Yuz" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="wDn-bm-XzM"/>
                 <constraint firstItem="aIT-7x-yxy" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="yFw-E9-krH"/>
+                <constraint firstItem="9f4-MD-tv9" firstAttribute="top" secondItem="PMb-Wc-O6c" secondAttribute="top" constant="-2" id="yWd-kW-a69"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="138.75" y="97.183098591549296"/>
