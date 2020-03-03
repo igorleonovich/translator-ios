@@ -10,6 +10,15 @@ import UIKit
 
 struct Settings {
     
+    static var offlineMode: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "offlineMode")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "offlineMode")
+        }
+    }
+    
     static var colorMode: ColorMode {
         get {
             if let colorModeString = UserDefaults.standard.string(forKey: "colorMode") {

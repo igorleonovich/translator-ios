@@ -35,11 +35,30 @@ class MainViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.layer.cornerRadius = 20
+        
+        setupOfflineMode()
+        setupColors()
+        setupLanguagesUI()
+    }
+    
+    // MARK: - Setup
+    
+    private func setupOfflineMode() {
+        updateRegardingToOfflineMode()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateRegardingToOfflineMode), name: .didChangedOfflineMode, object: nil)
+    }
+    
+    private func setupColors() {
         updateColors()
         NotificationCenter.default.addObserver(self, selector: #selector(updateColors), name: .didChangedColorMode, object: nil)
+    }
+    
+    private func setupLanguagesUI() {
         [upLanguageImageView, downLanguageImageView].forEach { languageImageView in
             languageImageView?.round()
             languageImageView?.layer.borderWidth = 0.5
@@ -51,9 +70,10 @@ class MainViewController: UIViewController {
         }
     }
     
-    @objc func selectLanguage() {
-        let vc = LanguageSelectViewController(core: core)
-        present(vc, animated: true, completion: nil)
+    // MARK: - Internal Actions
+    
+    @objc func updateRegardingToOfflineMode() {
+        
     }
     
     @objc func updateColors() {
@@ -68,8 +88,16 @@ class MainViewController: UIViewController {
         }
     }
     
+    // MARK: - User Actions
+    
+    @objc func selectLanguage() {
+        let vc = LanguageSelectViewController(core: core)
+        present(vc, animated: true, completion: nil)
+    }
+    
     @IBAction func pressOfflineButton(_ sender: Any) {
-        
+        Settings.offlineMode = !Settings.offlineMode
+        NotificationCenter.default.post(name: .didChangedOfflineMode, object: nil)
     }
     
     @IBAction func pressCameraButton(_ sender: Any) {

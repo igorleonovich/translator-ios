@@ -207,17 +207,19 @@ public class SwiftGoogleTranslate {
                 return
             }
             
-            guard let object = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any], let d = object["data"] as? [String: Any], let languages = d["languages"] as? [[String: String]] else {
-                completion(nil, error)
-                return
-            }
+            try? data.write(to: Constants.languagesFile)
             
-            var result = [Language]()
-            for language in languages {
-                if let code = language["language"], let name = language["name"] {
-                    result.append(Language(language: code, name: name))
-                }
-            }
+//            guard let object = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any], let d = object["data"] as? [String: Any], let languages = d["languages"] as? [[String: String]] else {
+//                completion(nil, error)
+//                return
+//            }
+//
+//            var result = [Language]()
+//            for language in languages {
+//                if let code = language["language"], let name = language["name"] {
+//                    result.append(Language(language: code, name: name))
+//                }
+//            }
             completion(result, nil)
         }
         task.resume()
