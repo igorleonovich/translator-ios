@@ -73,3 +73,11 @@ class CustomButtonSubView: UIView {
         round()
     }
 }
+
+class LanguageImageSubView: UIView {
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        round()
+    }
+}

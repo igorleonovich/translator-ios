@@ -18,6 +18,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var settingsButton: CustomButton!
     @IBOutlet weak var upLanguageImageView: UIImageView!
     @IBOutlet weak var downLanguageImageView: UIImageView!
+    @IBOutlet weak var upLanguageImageSubView: LanguageImageSubView!
+    @IBOutlet weak var downLanguageImageSubView: LanguageImageSubView!
     
     @IBOutlet weak var audioLineView: UIView!
     
@@ -28,6 +30,13 @@ class MainViewController: UIViewController {
         view.layer.cornerRadius = 20
         updateColors()
         NotificationCenter.default.addObserver(self, selector: #selector(updateColors), name: .didChangedColorMode, object: nil)
+        upLanguageImageView.image = UIImage(named: "RU", in: FlagKit.assetBundle, with: nil)
+        downLanguageImageView.image = UIImage(named: "US", in: FlagKit.assetBundle, with: nil)
+        [upLanguageImageView, downLanguageImageView].forEach { languageImageView in
+            languageImageView?.round()
+            languageImageView?.layer.borderWidth = 0.25
+            languageImageView?.layer.borderColor = UIColor.Black.Black025Alpha.cgColor
+        }
     }
     
     @objc func updateColors() {
@@ -36,6 +45,9 @@ class MainViewController: UIViewController {
             self.view.backgroundColor = Settings.basicColor
             [self.offlineButton, self.cameraButton, self.settingsButton].forEach { $0.update() }
             self.audioLineView.backgroundColor = Settings.colorMode == .light ? UIColor.Blue.DeepSkyBlue : UIColor.Blue.LilyWhiteSemiTransparent
+            [self.upLanguageImageSubView, self.downLanguageImageSubView].forEach { languageImageSubView in
+                languageImageSubView?.backgroundColor = Settings.colorMode == .light ? UIColor.Blue.LilyWhite : .white
+            }
         }
     }
     

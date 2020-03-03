@@ -18,6 +18,9 @@ extension UIColor {
     struct Green {
         static let Lima = UIColor(red: 127, green: 184, blue: 32)
     }
+    struct Black {
+        static let Black025Alpha = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25)
+    }
 }
 
 extension UIColor {
