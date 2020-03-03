@@ -94,11 +94,24 @@ class MainViewController: UIViewController {
     
     @objc func selectLanguage() {
         let vc = LanguageSelectViewController(core: core)
-        present(vc, animated: true, completion: nil)
+        present(vc, animated: true)
     }
     
     @IBAction func pressOfflineButton(_ sender: Any) {
         Settings.offlineMode = !Settings.offlineMode
+        
+        let value = Settings.offlineMode ? "On" : "Off"
+        let alert = UIAlertController(title: nil, message: "Offline Mode \(value)", preferredStyle: .alert)
+        alert.view.backgroundColor = UIColor.black
+        alert.view.alpha = 0.5
+        alert.view.layer.cornerRadius = 15
+        
+        present(alert, animated: true)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+            alert.dismiss(animated: true)
+        }
+        
         NotificationCenter.default.post(name: .didChangedOfflineMode, object: nil)
     }
     
