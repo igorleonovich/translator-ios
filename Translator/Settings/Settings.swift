@@ -33,7 +33,18 @@ struct Settings {
         return Settings.colorMode == .light ? .white : UIColor.Blue.Mirage
     }
     
-    static var voiceMode: VoiceMode = .female
+    static var voiceMode: VoiceMode {
+        get {
+            if let voiceModeString = UserDefaults.standard.string(forKey: "voiceMode") {
+                return VoiceMode.init(rawValue: voiceModeString)!
+            } else {
+                return .female
+            }
+        }
+        set {
+            UserDefaults.standard.set(newValue.rawValue, forKey: "voiceMode")
+        }
+    }
     static var proposedVoiceMode: VoiceMode {
         if voiceMode == .female {
             return .male
