@@ -52,6 +52,32 @@ struct Settings {
             return .female
         }
     }
+    
+    static var upLanguage: Language {
+        get {
+            if let upLanguageCode = UserDefaults.standard.string(forKey: "upLanguageCode") {
+                return Language(code: upLanguageCode)
+            } else {
+                return Language(code: "ru")
+            }
+        }
+        set {
+            UserDefaults.standard.set(newValue.code, forKey: "upLanguageCode")
+        }
+    }
+    
+    static var downLanguage: Language {
+        get {
+            if let downLanguageCode = UserDefaults.standard.string(forKey: "downLanguageCode") {
+                return Language(code: downLanguageCode)
+            } else {
+                return Language(code: "en")
+            }
+        }
+        set {
+            UserDefaults.standard.set(newValue.code, forKey: "downLanguageCode")
+        }
+    }
 }
 
 enum ColorMode: String {
@@ -62,4 +88,9 @@ enum ColorMode: String {
 enum VoiceMode: String {
     case female
     case male
+}
+
+struct Language {
+    
+    let code: String
 }

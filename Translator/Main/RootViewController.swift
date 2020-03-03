@@ -24,10 +24,10 @@ class RootViewController: BaseViewController {
     private func setupUI() {
         centerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(centerView)
-        centerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+        centerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         centerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         centerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        centerView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        centerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
         let mainVC = MainViewController()
         addChild(mainVC)
