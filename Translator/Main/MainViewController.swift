@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FlagKit
 import MessageUI
 
 class MainViewController: UIViewController {
