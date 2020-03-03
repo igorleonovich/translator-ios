@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B0D5F66240E7FB00052A3E4 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0D5F65240E7FB00052A3E4 /* Settings.swift */; };
+		0B0D5F68240E80F30052A3E4 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0D5F67240E80F30052A3E4 /* String+Extensions.swift */; };
+		0B0D5F6A240E87ED0052A3E4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0D5F69240E87ED0052A3E4 /* Constants.swift */; };
 		0B31E50C240D3C5B0080B0AE /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B31E50B240D3C5B0080B0AE /* UIColor+Extensions.swift */; };
 		0B31E50E240D467E0080B0AE /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B31E50D240D467E0080B0AE /* CustomButton.swift */; };
 		0B3F2A6D2407DA1700BCAC88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3F2A6C2407DA1700BCAC88 /* AppDelegate.swift */; };
@@ -42,6 +45,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B0D5F65240E7FB00052A3E4 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		0B0D5F67240E80F30052A3E4 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		0B0D5F69240E87ED0052A3E4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0B31E50B240D3C5B0080B0AE /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		0B31E50D240D467E0080B0AE /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		0B3F2A692407DA1700BCAC88 /* Translator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Translator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +98,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B0D5F64240E7F9E0052A3E4 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				0B0D5F65240E7FB00052A3E4 /* Settings.swift */,
+				0B0D5F69240E87ED0052A3E4 /* Constants.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		0B3F2A602407DA1700BCAC88 = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +129,7 @@
 		0B3F2A6B2407DA1700BCAC88 /* Translator */ = {
 			isa = PBXGroup;
 			children = (
+				0B0D5F64240E7F9E0052A3E4 /* Settings */,
 				0B7408D3240D14E200ECC102 /* UI */,
 				0B7408CC240C258200ECC102 /* Extensions */,
 				0B7408C7240C224800ECC102 /* Main */,
@@ -265,6 +281,7 @@
 				0B7408CD240C25AA00ECC102 /* UIViewController+Extensions.swift */,
 				0B31E50B240D3C5B0080B0AE /* UIColor+Extensions.swift */,
 				0B7408D4240D14F300ECC102 /* UIView+Extensions.swift */,
+				0B0D5F67240E80F30052A3E4 /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -409,6 +426,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B0D5F66240E7FB00052A3E4 /* Settings.swift in Sources */,
 				0B74085B24080D7400ECC102 /* ImageTranslationViewController.swift in Sources */,
 				0B7408C9240C226600ECC102 /* MainViewController.swift in Sources */,
 				0B740868240810E900ECC102 /* BaseViewController.swift in Sources */,
@@ -417,7 +435,9 @@
 				0B7408CE240C25AA00ECC102 /* UIViewController+Extensions.swift in Sources */,
 				0B74085F24080DC200ECC102 /* SettingsViewController.swift in Sources */,
 				0B7408D5240D14F300ECC102 /* UIView+Extensions.swift in Sources */,
+				0B0D5F6A240E87ED0052A3E4 /* Constants.swift in Sources */,
 				0B7408BF24085ACA00ECC102 /* MDVTabbableViewController.swift in Sources */,
+				0B0D5F68240E80F30052A3E4 /* String+Extensions.swift in Sources */,
 				0B7408BE24085ACA00ECC102 /* MDVTabBarItemable.swift in Sources */,
 				0B3F2A6F2407DA1700BCAC88 /* SceneDelegate.swift in Sources */,
 				0B74085524080D4A00ECC102 /* TabBarController.swift in Sources */,

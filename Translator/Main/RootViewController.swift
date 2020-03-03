@@ -12,6 +12,10 @@ class RootViewController: BaseViewController {
     
     let centerView = UIView()
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -20,7 +24,7 @@ class RootViewController: BaseViewController {
     private func setupUI() {
         centerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(centerView)
-        centerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        centerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
         centerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         centerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         centerView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true

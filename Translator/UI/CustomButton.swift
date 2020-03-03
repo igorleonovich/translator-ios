@@ -11,8 +11,8 @@ import UIKit
 class CustomButton: UIButton {
     
     var normalTintColor = UIColor.Blue.DeepSkyBlue
-    var selectedTintColor = UIColor.white
-    var normalBackgroundColor = UIColor.white
+    var selectedTintColor = UIColor.clear
+    var normalBackgroundColor = UIColor.clear
     var selectedBackgroundColor = UIColor.Blue.DeepSkyBlue
     var customButtonSubViewNormalColor = UIColor.Blue.LilyWhite
     
@@ -34,23 +34,35 @@ class CustomButton: UIButton {
     override func awakeFromNib() {
         super.awakeFromNib()
         round()
-        setup()
+        update()
     }
     
-    private func setup() {
+    func updateColors() {
+        selectedTintColor = Settings.basicColor
+        normalBackgroundColor = Settings.basicColor
+        customButtonSubViewNormalColor = Settings.colorMode == .light ? UIColor.Blue.LilyWhite : UIColor.Blue.LilyWhiteSemiTransparent
+    }
+    
+    func update() {
+        updateColors()
         tintColor = normalTintColor
         backgroundColor = normalBackgroundColor
+        customButtonSubView?.backgroundColor = customButtonSubViewNormalColor
     }
 }
 
 class MicrophoneButton: CustomButton {
     
     override func awakeFromNib() {
-        normalTintColor = UIColor.white
-        selectedTintColor = UIColor.white
+        updateColors()
+        super.awakeFromNib()
+    }
+    
+    override func updateColors() {
+        normalTintColor = .white
+        selectedTintColor = .white
         normalBackgroundColor = UIColor.Blue.DeepSkyBlue
         selectedBackgroundColor = UIColor.Green.Lima
-        super.awakeFromNib()
     }
 }
 
