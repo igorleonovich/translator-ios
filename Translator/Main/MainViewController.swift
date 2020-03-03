@@ -24,6 +24,17 @@ class MainViewController: UIViewController {
     
     var mailVC: MFMailComposeViewController?
     
+    let core: Core
+    
+    init(core: Core) {
+        self.core = core
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.layer.cornerRadius = 20
@@ -33,7 +44,16 @@ class MainViewController: UIViewController {
             languageImageView?.round()
             languageImageView?.layer.borderWidth = 0.5
             languageImageView?.layer.borderColor = UIColor.Black.Black025Alpha.cgColor
+            
+            let tap = UITapGestureRecognizer(target: self, action: #selector(selectLanguage))
+            languageImageView?.addGestureRecognizer(tap)
+            languageImageView?.isUserInteractionEnabled = true
         }
+    }
+    
+    @objc func selectLanguage() {
+        let vc = LanguageSelectViewController(core: core)
+        present(vc, animated: true, completion: nil)
     }
     
     @objc func updateColors() {

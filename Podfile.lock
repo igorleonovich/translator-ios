@@ -1,26 +1,3 @@
-PODS:
-  - Alamofire (5.0.2)
-  - Moya (14.0.0):
-    - Moya/Core (= 14.0.0)
-  - Moya/Core (14.0.0):
-    - Alamofire (~> 5.0)
-  - SwiftGoogleTranslate (0.2.1)
-
-DEPENDENCIES:
-  - Moya (~> 14.0)
-  - SwiftGoogleTranslate
-
-SPEC REPOS:
-  trunk:
-    - Alamofire
-    - Moya
-    - SwiftGoogleTranslate
-
-SPEC CHECKSUMS:
-  Alamofire: 3ba7a4db18b4f62c4a1c0e1cb39d7f3d52e10ada
-  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
-  SwiftGoogleTranslate: 96960d3548e800e15b347518afca546d2edc8519
-
-PODFILE CHECKSUM: 6120aab7706ded751fcb9120370cbe4a97536ab9
+PODFILE CHECKSUM: f7ec2dfc9a4a5cb69de73ceab4708ffb243d877e
 
 COCOAPODS: 1.8.4

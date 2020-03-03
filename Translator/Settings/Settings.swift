@@ -53,29 +53,29 @@ struct Settings {
         }
     }
     
-    static var upLanguage: Language {
+    static var upLanguage: SwiftGoogleTranslate.Language {
         get {
-            if let upLanguageCode = UserDefaults.standard.string(forKey: "upLanguageCode") {
-                return Language(code: upLanguageCode)
+            if let upLanguageCode = UserDefaults.standard.string(forKey: "upLanguage") {
+                return SwiftGoogleTranslate.Language(language: "ru", name: "Russian")
             } else {
-                return Language(code: "ru")
+                return SwiftGoogleTranslate.Language(language: "ru", name: "Russian")
             }
         }
         set {
-            UserDefaults.standard.set(newValue.code, forKey: "upLanguageCode")
+            UserDefaults.standard.set(newValue.language, forKey: "upLanguage")
         }
     }
     
-    static var downLanguage: Language {
+    static var downLanguage: SwiftGoogleTranslate.Language {
         get {
             if let downLanguageCode = UserDefaults.standard.string(forKey: "downLanguageCode") {
-                return Language(code: downLanguageCode)
+                return SwiftGoogleTranslate.Language(language: "en", name: "English")
             } else {
-                return Language(code: "en")
+                return SwiftGoogleTranslate.Language(language: "en", name: "English")
             }
         }
         set {
-            UserDefaults.standard.set(newValue.code, forKey: "downLanguageCode")
+            UserDefaults.standard.set(newValue.language, forKey: "downLanguage")
         }
     }
 }
@@ -88,9 +88,4 @@ enum ColorMode: String {
 enum VoiceMode: String {
     case female
     case male
-}
-
-struct Language {
-    
-    let code: String
 }

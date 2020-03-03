@@ -75,16 +75,5 @@ class TextTranslationViewController: BaseTranslationViewController, MDVTabbableV
 //                }
 //            }
 //        }
-        
-        /// Prints available languages.
-//        SwiftGoogleTranslate.shared.languages { (languages, error) in
-//            if let languages = languages {
-//                for language in languages {
-//                    print(language.language)
-//                    print(language.name)
-//                    print("---")
-//                }
-//            }
-//        }
     }
 }

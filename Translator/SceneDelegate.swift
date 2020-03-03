@@ -12,16 +12,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    let core = Core()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: UIScreen.main.bounds)
-        let viewController = RootViewController()
+        let viewController = RootViewController(core: core)
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
         window?.windowScene = windowScene
         
         SwiftGoogleTranslate.shared.start(with: "AIzaSyB3n5JRdcYrek-TYbKdBhhwIaGkSjSc55s")
+        
+        core.getLanguages()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

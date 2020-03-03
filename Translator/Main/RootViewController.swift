@@ -12,8 +12,19 @@ class RootViewController: BaseViewController {
     
     let centerView = UIView()
     
+    let core: Core
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    init(core: Core) {
+        self.core = core
+        super.init()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -29,7 +40,7 @@ class RootViewController: BaseViewController {
         centerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         centerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
-        let mainVC = MainViewController()
+        let mainVC = MainViewController(core: core)
         addChild(mainVC)
         
         mainVC.view.translatesAutoresizingMaskIntoConstraints = false
