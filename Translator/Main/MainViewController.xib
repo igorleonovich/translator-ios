@@ -11,6 +11,7 @@
             <connections>
                 <outlet property="cameraButton" destination="PMb-Wc-O6c" id="ahf-qp-R5Q"/>
                 <outlet property="downLanguageImageView" destination="0EL-pd-Yuz" id="atG-Ym-afy"/>
+                <outlet property="microphoneButton" destination="jvo-bd-sQC" id="n35-2i-uO0"/>
                 <outlet property="offlineButton" destination="aIT-7x-yxy" id="uBG-Td-D1i"/>
                 <outlet property="settingsButton" destination="dXp-gZ-zV1" id="clH-zM-Xld"/>
                 <outlet property="upLanguageImageView" destination="gR0-oa-rBW" id="Cqt-aY-hUw"/>
@@ -60,12 +61,20 @@
                         <action selector="pressCameraButton:" destination="-1" eventType="touchUpInside" id="LHD-wm-zYY"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvo-bd-sQC" customClass="CustomButton" customModule="Translator" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shj-lj-AeU">
+                    <rect key="frame" x="0.0" y="284" width="320" height="0.5"/>
+                    <color key="backgroundColor" red="0.01176470588" green="0.70588235290000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="Zjp-UX-tlo"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvo-bd-sQC" customClass="MicrophoneButton" customModule="Translator" customModuleProvider="target">
                     <rect key="frame" x="110" y="234" width="100" height="100"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="4Cv-Mu-cJ5"/>
                         <constraint firstAttribute="width" constant="100" id="gYR-G7-SSf"/>
                     </constraints>
+                    <inset key="imageEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                     <state key="normal" image="mic.fill" catalog="system"/>
                 </button>
                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXp-gZ-zV1" customClass="CustomButton" customModule="Translator" customModuleProvider="target">
@@ -84,6 +93,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="shj-lj-AeU" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="4UE-V0-kuQ"/>
                 <constraint firstItem="aIT-7x-yxy" firstAttribute="centerY" secondItem="gR0-oa-rBW" secondAttribute="centerY" id="9jk-0Z-QrM"/>
                 <constraint firstItem="PMb-Wc-O6c" firstAttribute="centerY" secondItem="gR0-oa-rBW" secondAttribute="centerY" id="F4V-eq-iAA"/>
                 <constraint firstItem="jvo-bd-sQC" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="Fhu-aS-uJV"/>
@@ -93,7 +103,9 @@
                 <constraint firstItem="dXp-gZ-zV1" firstAttribute="centerY" secondItem="0EL-pd-Yuz" secondAttribute="centerY" id="StH-cA-r35"/>
                 <constraint firstItem="gR0-oa-rBW" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Vh3-BH-sOL"/>
                 <constraint firstItem="gR0-oa-rBW" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="bnc-1d-bKc"/>
+                <constraint firstAttribute="trailing" secondItem="shj-lj-AeU" secondAttribute="trailing" id="hrc-eG-wQS"/>
                 <constraint firstItem="dXp-gZ-zV1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="l8O-YL-JAM"/>
+                <constraint firstItem="shj-lj-AeU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lOw-aE-Wn5"/>
                 <constraint firstItem="0EL-pd-Yuz" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="wDn-bm-XzM"/>
                 <constraint firstItem="aIT-7x-yxy" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="yFw-E9-krH"/>
             </constraints>

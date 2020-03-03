@@ -12,8 +12,9 @@ import FlagKit
 class MainViewController: UIViewController {
     
     @IBOutlet weak var offlineButton: CustomButton!
-    @IBOutlet weak var cameraButton: UIButton!
-    @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var cameraButton: CustomButton!
+    @IBOutlet weak var microphoneButton: CustomButton!
+    @IBOutlet weak var settingsButton: CustomButton!
     @IBOutlet weak var upLanguageImageView: UIImageView!
     @IBOutlet weak var downLanguageImageView: UIImageView!
     

@@ -10,21 +10,42 @@ import UIKit
 
 class CustomButton: UIButton {
     
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        round()
-        tintColor = UIColor.Blue.DeepSkyBlue
-    }
-    
+    var normalTintColor = UIColor.Blue.DeepSkyBlue
+    var selectedTintColor = UIColor.white
+    var normalBackgroundColor = UIColor.white
+    var selectedBackgroundColor = UIColor.Blue.DeepSkyBlue
+        
     override var isHighlighted: Bool {
         get {
             return false
         }
         set {
-            backgroundColor = newValue ? UIColor.Blue.DeepSkyBlue : .white
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                self.tintColor = newValue ? .white : UIColor.Blue.DeepSkyBlue
+            backgroundColor = newValue ? selectedBackgroundColor : normalBackgroundColor
+            DispatchQueue.main.async {
+                self.tintColor = newValue ? self.selectedTintColor : self.normalTintColor
             }
         }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        round()
+        setup()
+    }
+    
+    private func setup() {
+        tintColor = normalTintColor
+        backgroundColor = normalBackgroundColor
+    }
+}
+
+class MicrophoneButton: CustomButton {
+    
+    override func awakeFromNib() {
+        normalTintColor = UIColor.white
+        selectedTintColor = UIColor.white
+        normalBackgroundColor = UIColor.Blue.DeepSkyBlue
+        selectedBackgroundColor = UIColor.Green.Lima
+        super.awakeFromNib()
     }
 }
