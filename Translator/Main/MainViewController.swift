@@ -30,11 +30,9 @@ class MainViewController: UIViewController {
         view.layer.cornerRadius = 20
         updateColors()
         NotificationCenter.default.addObserver(self, selector: #selector(updateColors), name: .didChangedColorMode, object: nil)
-        upLanguageImageView.image = UIImage(named: "RU", in: FlagKit.assetBundle, with: nil)
-        downLanguageImageView.image = UIImage(named: "US", in: FlagKit.assetBundle, with: nil)
         [upLanguageImageView, downLanguageImageView].forEach { languageImageView in
             languageImageView?.round()
-            languageImageView?.layer.borderWidth = 0.25
+            languageImageView?.layer.borderWidth = 0.5
             languageImageView?.layer.borderColor = UIColor.Black.Black025Alpha.cgColor
         }
     }
