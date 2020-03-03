@@ -31,9 +31,12 @@ class MainViewController: UIViewController {
     }
     
     @objc func updateColors() {
-        view.backgroundColor = Settings.basicColor
-        [offlineButton, cameraButton, settingsButton].forEach { $0.update() }
-        audioLineView.backgroundColor = Settings.colorMode == .light ? UIColor.Blue.DeepSkyBlue : UIColor.Blue.LilyWhiteSemiTransparent
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            guard let `self` = self else { return }
+            self.view.backgroundColor = Settings.basicColor
+            [self.offlineButton, self.cameraButton, self.settingsButton].forEach { $0.update() }
+            self.audioLineView.backgroundColor = Settings.colorMode == .light ? UIColor.Blue.DeepSkyBlue : UIColor.Blue.LilyWhiteSemiTransparent
+        }
     }
     
     @IBAction func pressOfflineButton(_ sender: Any) {
