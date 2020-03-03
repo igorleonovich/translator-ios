@@ -13,14 +13,11 @@ class Core {
     func getLanguages() {
         DispatchQueue.global().async {
             // Prints available languages.
-            SwiftGoogleTranslate.shared.languages { (languages, error) in
-                if let languages = languages {
-                    
-                    for language in languages {
-                        print(language.language)
-                        print(language.name)
-                        print("---")
-                    }
+            SwiftGoogleTranslate.shared.languages { (data, error) in
+                if let data = data {
+                    Language.save(from: data)
+                } else if let error = error {
+                    print(error)
                 }
             }
         }

@@ -12,9 +12,9 @@ class LanguageSelectViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     
-    var languages = [SwiftGoogleTranslate.Language]()
+    var languages = [Language]()
     let searchController = UISearchController(searchResultsController: nil)
-    var filteredLanguages = [SwiftGoogleTranslate.Language]()
+    var filteredLanguages = [Language]()
     
     let core: Core
     

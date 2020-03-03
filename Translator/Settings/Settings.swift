@@ -21,6 +21,7 @@ struct Settings {
     
     static var colorMode: ColorMode {
         get {
+            
             if let colorModeString = UserDefaults.standard.string(forKey: "colorMode") {
                 return ColorMode.init(rawValue: colorModeString)!
             } else {
@@ -62,12 +63,12 @@ struct Settings {
         }
     }
     
-    static var upLanguage: SwiftGoogleTranslate.Language {
+    static var upLanguage: Language {
         get {
             if let upLanguageCode = UserDefaults.standard.string(forKey: "upLanguage") {
-                return SwiftGoogleTranslate.Language(language: "ru", name: "Russian")
+                return Language(language: "ru", name: "Russian")
             } else {
-                return SwiftGoogleTranslate.Language(language: "ru", name: "Russian")
+                return Language(language: "ru", name: "Russian")
             }
         }
         set {
@@ -75,12 +76,12 @@ struct Settings {
         }
     }
     
-    static var downLanguage: SwiftGoogleTranslate.Language {
+    static var downLanguage: Language {
         get {
             if let downLanguageCode = UserDefaults.standard.string(forKey: "downLanguageCode") {
-                return SwiftGoogleTranslate.Language(language: "en", name: "English")
+                return Language(language: "en", name: "English")
             } else {
-                return SwiftGoogleTranslate.Language(language: "en", name: "English")
+                return Language(language: "en", name: "English")
             }
         }
         set {

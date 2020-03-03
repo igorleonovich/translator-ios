@@ -10,10 +10,10 @@ import UIKit
 
 class CustomButton: UIButton {
     
-    var normalTintColor = UIColor.Blue.DeepSkyBlue
+    var normalTintColor = UIColor.clear
     var selectedTintColor = UIColor.clear
     var normalBackgroundColor = UIColor.clear
-    var selectedBackgroundColor = UIColor.Blue.DeepSkyBlue
+    var selectedBackgroundColor = UIColor.clear
     var customButtonSubViewNormalColor = UIColor.Blue.LilyWhite
     
     @IBOutlet weak var customButtonSubView: CustomButtonSubView?
@@ -38,9 +38,11 @@ class CustomButton: UIButton {
     }
     
     func updateColors() {
-        selectedTintColor = Settings.basicColor
-        normalBackgroundColor = Settings.basicColor
-        customButtonSubViewNormalColor = Settings.colorMode == .light ? UIColor.Blue.LilyWhite : UIColor.Blue.LilyWhiteSemiTransparent
+        normalTintColor = Settings.offlineMode ? .white : UIColor.Blue.DeepSkyBlue
+        selectedTintColor = Settings.offlineMode ? UIColor.Blue.DeepSkyBlue : Settings.basicColor
+        normalBackgroundColor = Settings.offlineMode ? UIColor.Blue.DeepSkyBlue : Settings.basicColor
+        selectedBackgroundColor = Settings.offlineMode ? .white : UIColor.Blue.DeepSkyBlue
+        customButtonSubViewNormalColor = (Settings.colorMode == .light && !Settings.offlineMode) ? UIColor.Blue.LilyWhite : UIColor.Blue.LilyWhiteSemiTransparent
     }
     
     func update() {

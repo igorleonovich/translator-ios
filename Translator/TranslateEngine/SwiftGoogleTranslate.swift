@@ -8,17 +8,31 @@
 
 import Foundation
 
+public struct Language: Codable {
+    public let language: String
+    public let name: String
+}
+
+extension Language {
+    static func save(from data: Data) {
+        try? data.write(to: Constants.languagesFile)
+    }
+    
+    static func languages() -> [Language]? {
+        if let data = try? Data(contentsOf: Constants.languagesFile),
+            let languages = try? JSONDecoder().decode([Language].self, from: data) {
+            
+            return languages
+        }
+        return nil
+    }
+}
+
 /// A helper class for using Google Translate API.
 public class SwiftGoogleTranslate {
     
     /// Shared instance.
     public static let shared = SwiftGoogleTranslate()
-
-    /// Language response structure.
-    public struct Language {
-        public let language: String
-        public let name: String
-    }
     
     /// Detect response structure.
     public struct Detection {
@@ -178,7 +192,7 @@ public class SwiftGoogleTranslate {
             - model: The translation model of the supported languages. Can be either base to return languages supported by the Phrase-Based Machine Translation (PBMT) model, or nmt to return languages supported by the Neural Machine Translation (NMT) model. If omitted, then all supported languages are returned. Languages supported by the NMT model can only be translated to or from English (en).
             - completion: A completion closure with an array of Language structures and an error if there is.
     */
-    public func languages(_ target: String = "en", _ model: String = "base", _ completion: @escaping ((_ languages: [Language]?, _ error: Error?) -> Void)) {
+    public func languages(_ target: String = "en", _ model: String = "base", _ completion: @escaping ((_ data: Data?, _ error: Error?) -> Void)) {
         guard var urlComponents = URLComponents(string: API.languages.url) else {
             completion(nil, nil)
             return
@@ -206,21 +220,7 @@ public class SwiftGoogleTranslate {
                 completion(nil, error)
                 return
             }
-            
-            try? data.write(to: Constants.languagesFile)
-            
-//            guard let object = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any], let d = object["data"] as? [String: Any], let languages = d["languages"] as? [[String: String]] else {
-//                completion(nil, error)
-//                return
-//            }
-//
-//            var result = [Language]()
-//            for language in languages {
-//                if let code = language["language"], let name = language["name"] {
-//                    result.append(Language(language: code, name: name))
-//                }
-//            }
-            completion(result, nil)
+            completion(data, nil)
         }
         task.resume()
     }

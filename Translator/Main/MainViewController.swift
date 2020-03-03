@@ -12,15 +12,16 @@ import MessageUI
 class MainViewController: UIViewController {
     
     @IBOutlet weak var offlineButton: CustomButton!
+    @IBOutlet weak var cameraButtonSubView: CustomButtonSubView!
     @IBOutlet weak var cameraButton: CustomButton!
+    @IBOutlet weak var audioLineView: UIView!
     @IBOutlet weak var microphoneButton: CustomButton!
+    @IBOutlet weak var microphoneButtonSubView: CustomButtonSubView!
     @IBOutlet weak var settingsButton: CustomButton!
     @IBOutlet weak var upLanguageImageView: UIImageView!
-    @IBOutlet weak var downLanguageImageView: UIImageView!
     @IBOutlet weak var upLanguageImageSubView: LanguageImageSubView!
+    @IBOutlet weak var downLanguageImageView: UIImageView!
     @IBOutlet weak var downLanguageImageSubView: LanguageImageSubView!
-    
-    @IBOutlet weak var audioLineView: UIView!
     
     var mailVC: MFMailComposeViewController?
     
@@ -73,13 +74,14 @@ class MainViewController: UIViewController {
     // MARK: - Internal Actions
     
     @objc func updateRegardingToOfflineMode() {
-        
+        [cameraButton, cameraButtonSubView, microphoneButton, microphoneButtonSubView].forEach { $0.isHidden = Settings.offlineMode }
+        updateColors()
     }
     
     @objc func updateColors() {
         UIView.animate(withDuration: 0.5) { [weak self] in
             guard let `self` = self else { return }
-            self.view.backgroundColor = Settings.basicColor
+            self.view.backgroundColor = Settings.offlineMode ? UIColor.Blue.DeepSkyBlue : Settings.basicColor
             [self.offlineButton, self.cameraButton, self.settingsButton].forEach { $0.update() }
             self.audioLineView.backgroundColor = Settings.colorMode == .light ? UIColor.Blue.DeepSkyBlue : UIColor.Blue.LilyWhiteSemiTransparent
             [self.upLanguageImageSubView, self.downLanguageImageSubView].forEach { languageImageSubView in
