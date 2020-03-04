@@ -97,17 +97,17 @@ class MainViewController: UIViewController {
     
     private func updateUpLanguage() {
         if let flag = Settings.upLanguage.flag {
-            upLanguageImageView.image = UIImage(named: flag)
+            self.upLanguageImageView.image = UIImage(named: flag)
         } else {
-            upLanguageImageView.image = nil
+            self.upLanguageImageView.image = nil
         }
     }
     
     private func updateDownLanguage() {
         if let flag = Settings.downLanguage.flag {
-            downLanguageImageView.image = UIImage(named: flag)
+            self.downLanguageImageView.image = UIImage(named: flag)
         } else {
-            downLanguageImageView.image = nil
+            self.downLanguageImageView.image = nil
         }
     }
     

@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LanguageSelectViewController" customModule="Translator" customModuleProvider="target">
             <connections>
+                <outlet property="searchBar" destination="pRh-HD-WVd" id="EFR-yM-4ee"/>
                 <outlet property="tableView" destination="ZY5-5t-N13" id="Acf-6f-UW4"/>
                 <outlet property="view" destination="iN0-l3-epB" id="wvf-yG-FCq"/>
             </connections>
@@ -18,8 +19,12 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="pRh-HD-WVd">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZY5-5t-N13">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <rect key="frame" x="0.0" y="56" width="320" height="512"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="vrf-G2-S5y"/>
                         <outlet property="delegate" destination="-1" id="U4V-Hh-XXz"/>
@@ -28,13 +33,16 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="ZY5-5t-N13" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Fo8-0s-dUL"/>
+                <constraint firstItem="pRh-HD-WVd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="BWv-mr-aeT"/>
+                <constraint firstItem="pRh-HD-WVd" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="C41-uL-rD3"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ZY5-5t-N13" secondAttribute="trailing" id="RNf-dC-lHD"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ZY5-5t-N13" secondAttribute="bottom" id="gK1-cU-2wt"/>
                 <constraint firstItem="ZY5-5t-N13" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="o1n-ir-NC1"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pRh-HD-WVd" secondAttribute="trailing" id="pX8-ij-Hf6"/>
+                <constraint firstItem="ZY5-5t-N13" firstAttribute="top" secondItem="pRh-HD-WVd" secondAttribute="bottom" id="rDm-TR-ZSk"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="139" y="100"/>
+            <point key="canvasLocation" x="138.75" y="99.295774647887328"/>
         </view>
     </objects>
 </document>

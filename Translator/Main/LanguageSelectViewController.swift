@@ -10,6 +10,8 @@ import UIKit
 
 class LanguageSelectViewController: UIViewController {
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    var realSearchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
     
     let searchController = UISearchController(searchResultsController: nil)
@@ -21,6 +23,10 @@ class LanguageSelectViewController: UIViewController {
     
     var isSearchBarEmpty: Bool {
       return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    var isFiltering: Bool {
+        return searchController.isActive && !isSearchBarEmpty
     }
     
     init(core: Core, selectedLanguage: Language, completion: @escaping (Language) -> Void) {
@@ -37,17 +43,21 @@ class LanguageSelectViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = Settings.basicColor
-        tableView.backgroundColor = Settings.basicColor
-        
         let nib = UINib(nibName: "LanguageSelectCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Language"
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
+        realSearchBar = searchController.searchBar
+        searchBar.addSubview(realSearchBar)
+        
+        realSearchBar.barTintColor = Settings.basicColor
+        realSearchBar.tintColor = UIColor.Blue.DeepSkyBlue
+        realSearchBar.searchTextField.textColor = Settings.colorMode == .light ? .black : UIColor.Blue.LilyWhite
+        
+        view.backgroundColor = Settings.basicColor
+        tableView.backgroundColor = Settings.basicColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,11 +66,25 @@ class LanguageSelectViewController: UIViewController {
             tableView.selectRow(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .middle)
         }
     }
+    
+    func filterContentForSearchText(searchText: String) {
+        filteredLanguages = Settings.languages.filter { language in
+            if isSearchBarEmpty {
+                return true
+            } else {
+                return language.name.lowercased().contains(searchText.lowercased())
+            }
+        }
+        tableView.reloadData()
+    }
 }
 
 extension LanguageSelectViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering {
+            return filteredLanguages.count
+        }
         return Settings.languages.count
     }
     
@@ -71,7 +95,11 @@ extension LanguageSelectViewController: UITableViewDataSource {
             let selectedBackgroundView = UIView()
             selectedBackgroundView.backgroundColor = UIColor.Blue.DeepSkyBlue
             cell.selectedBackgroundView = selectedBackgroundView
-            cell.setup(language: Settings.languages[indexPath.row])
+            if isFiltering {
+                cell.setup(language: filteredLanguages[indexPath.row])
+            } else {
+                cell.setup(language: Settings.languages[indexPath.row])
+            }
             return cell
         }
         return UITableViewCell()
@@ -81,17 +109,20 @@ extension LanguageSelectViewController: UITableViewDataSource {
 extension LanguageSelectViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        completion(Settings.languages[indexPath.row])
-        dismiss(animated: true, completion: nil)
+        if isFiltering {
+            completion(filteredLanguages[indexPath.row])
+        } else {
+            completion(Settings.languages[indexPath.row])
+        }
+        searchController.isActive = false
+        dismiss(animated: true)
     }
 }
 
 extension LanguageSelectViewController: UISearchResultsUpdating {
     
   func updateSearchResults(for searchController: UISearchController) {
-//    let searchBar = searchController.searchBar
-//    let category = Candy.Category(rawValue:
-//      searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex])
-//    filterContentForSearchText(searchBar.text!, category: category)
+    let searchBar = searchController.searchBar
+    filterContentForSearchText(searchText: searchBar.text!)
   }
 }
