@@ -49,7 +49,7 @@ class RootViewController: BaseViewController {
         mainVC.view.topAnchor.constraint(equalTo: centerView.topAnchor).isActive = true
         mainVC.view.leadingAnchor.constraint(equalTo: centerView.leadingAnchor).isActive = true
         mainVC.view.trailingAnchor.constraint(equalTo: centerView.trailingAnchor).isActive = true
-        mainVC.view.bottomAnchor.constraint(equalTo: centerView.bottomAnchor).isActive = true
+        mainVC.view.bottomAnchor.constraint(equalTo: centerView.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
         mainVC.didMove(toParent: self)
     }

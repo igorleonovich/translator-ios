@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LanguageSelectViewController" customModule="Translator" customModuleProvider="target">
             <connections>
+                <outlet property="bottomConstraint" destination="gK1-cU-2wt" id="gF7-YU-wdQ"/>
                 <outlet property="searchBar" destination="pRh-HD-WVd" id="EFR-yM-4ee"/>
                 <outlet property="tableView" destination="ZY5-5t-N13" id="Acf-6f-UW4"/>
                 <outlet property="view" destination="iN0-l3-epB" id="wvf-yG-FCq"/>
