@@ -102,13 +102,11 @@ class MainViewController: UIViewController {
         
         let value = Settings.offlineMode ? "On" : "Off"
         let alert = UIAlertController(title: nil, message: "Offline Mode \(value)", preferredStyle: .alert)
-        alert.view.backgroundColor = UIColor.black
-        alert.view.alpha = 0.5
         alert.view.layer.cornerRadius = 15
         
         present(alert, animated: true)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             alert.dismiss(animated: true)
         }
         

@@ -300,6 +300,9 @@
 		0BCC35EE240EB10000C7F4E5 /* LanguageSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCC35ED240EB10000C7F4E5 /* LanguageSelectViewController.swift */; };
 		0BCC35F0240EB1E200C7F4E5 /* LanguageSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BCC35EF240EB1E200C7F4E5 /* LanguageSelectViewController.xib */; };
 		0BCC35F3240EB79A00C7F4E5 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCC35F2240EB79A00C7F4E5 /* Core.swift */; };
+		0BCC35F6240EEB3F00C7F4E5 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCC35F5240EEB3F00C7F4E5 /* Language.swift */; };
+		0BCC35F8240F89A700C7F4E5 /* LanguageSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BCC35F7240F89A700C7F4E5 /* LanguageSelectCell.xib */; };
+		0BCC35FA240F8A0C00C7F4E5 /* LanguageSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCC35F9240F8A0C00C7F4E5 /* LanguageSelectCell.swift */; };
 		0D537DC38426025B3D6297C5 /* Pods_Translator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD843D5FA36A96DB06F1ADF /* Pods_Translator.framework */; };
 /* End PBXBuildFile section */
 
@@ -599,6 +602,9 @@
 		0BCC35ED240EB10000C7F4E5 /* LanguageSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectViewController.swift; sourceTree = "<group>"; };
 		0BCC35EF240EB1E200C7F4E5 /* LanguageSelectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageSelectViewController.xib; sourceTree = "<group>"; };
 		0BCC35F2240EB79A00C7F4E5 /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
+		0BCC35F5240EEB3F00C7F4E5 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		0BCC35F7240F89A700C7F4E5 /* LanguageSelectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageSelectCell.xib; sourceTree = "<group>"; };
+		0BCC35F9240F8A0C00C7F4E5 /* LanguageSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectCell.swift; sourceTree = "<group>"; };
 		303CFFA7FCB8F811455986A6 /* Pods-Translator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translator.debug.xcconfig"; path = "Target Support Files/Pods-Translator/Pods-Translator.debug.xcconfig"; sourceTree = "<group>"; };
 		4BD843D5FA36A96DB06F1ADF /* Pods_Translator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Translator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD254710EE1F9DF8B86CC33 /* Pods-Translator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translator.release.xcconfig"; path = "Target Support Files/Pods-Translator/Pods-Translator.release.xcconfig"; sourceTree = "<group>"; };
@@ -780,6 +786,7 @@
 		0B7408C42409C58100ECC102 /* TranslateEngine */ = {
 			isa = PBXGroup;
 			children = (
+				0BCC35F4240EEB2800C7F4E5 /* Models */,
 				0B7408C52409C5A400ECC102 /* SwiftGoogleTranslate.swift */,
 			);
 			path = TranslateEngine;
@@ -790,7 +797,9 @@
 			children = (
 				0B7408C8240C226600ECC102 /* MainViewController.swift */,
 				0BCC35ED240EB10000C7F4E5 /* LanguageSelectViewController.swift */,
+				0BCC35F9240F8A0C00C7F4E5 /* LanguageSelectCell.swift */,
 				0BCC35EF240EB1E200C7F4E5 /* LanguageSelectViewController.xib */,
+				0BCC35F7240F89A700C7F4E5 /* LanguageSelectCell.xib */,
 				0B7408CA240C256600ECC102 /* RootViewController.swift */,
 				0B7408D1240C270000ECC102 /* MainViewController.xib */,
 			);
@@ -1096,6 +1105,14 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		0BCC35F4240EEB2800C7F4E5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0BCC35F5240EEB3F00C7F4E5 /* Language.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		6550BF414D93CE6A00194ED3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1379,6 +1396,7 @@
 				0BCC3587240EAAEE00C7F4E5 /* ir.png in Resources */,
 				0BCC358A240EAAEE00C7F4E5 /* kz.png in Resources */,
 				0BCC3551240EAAEE00C7F4E5 /* il.png in Resources */,
+				0BCC35F8240F89A700C7F4E5 /* LanguageSelectCell.xib in Resources */,
 				0BCC3546240EAAEE00C7F4E5 /* sc.png in Resources */,
 				0BCC3511240EAAEE00C7F4E5 /* mp.png in Resources */,
 				0BCC353C240EAAEE00C7F4E5 /* gd.png in Resources */,
@@ -1482,6 +1500,7 @@
 				0B7408BF24085ACA00ECC102 /* MDVTabbableViewController.swift in Sources */,
 				0B0D5F68240E80F30052A3E4 /* String+Extensions.swift in Sources */,
 				0B7408BE24085ACA00ECC102 /* MDVTabBarItemable.swift in Sources */,
+				0BCC35FA240F8A0C00C7F4E5 /* LanguageSelectCell.swift in Sources */,
 				0B3F2A6F2407DA1700BCAC88 /* SceneDelegate.swift in Sources */,
 				0B74085524080D4A00ECC102 /* TabBarController.swift in Sources */,
 				0B7408B224085ACA00ECC102 /* MDVTabBarItem.swift in Sources */,
@@ -1492,6 +1511,7 @@
 				0B7408CB240C256600ECC102 /* RootViewController.swift in Sources */,
 				0B7408C62409C5A400ECC102 /* SwiftGoogleTranslate.swift in Sources */,
 				0B74085724080D5200ECC102 /* TextTranslationViewController.swift in Sources */,
+				0BCC35F6240EEB3F00C7F4E5 /* Language.swift in Sources */,
 				0B7408B324085ACA00ECC102 /* MDVTabBar.swift in Sources */,
 				0B7408BD24085ACA00ECC102 /* MDVTabBarControllerDataSource+Delegate.swift in Sources */,
 				0B7408B624085ACA00ECC102 /* MDVSlidingOverlayAnimator.swift in Sources */,

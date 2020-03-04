@@ -10,16 +10,5 @@ import Foundation
 
 class Core {
     
-    func getLanguages() {
-        DispatchQueue.global().async {
-            // Prints available languages.
-            SwiftGoogleTranslate.shared.languages { (data, error) in
-                if let data = data {
-                    Language.save(from: data)
-                } else if let error = error {
-                    print(error)
-                }
-            }
-        }
-    }
+    
 }

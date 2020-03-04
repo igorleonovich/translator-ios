@@ -8,26 +8,6 @@
 
 import Foundation
 
-public struct Language: Codable {
-    public let language: String
-    public let name: String
-}
-
-extension Language {
-    static func save(from data: Data) {
-        try? data.write(to: Constants.languagesFile)
-    }
-    
-    static func languages() -> [Language]? {
-        if let data = try? Data(contentsOf: Constants.languagesFile),
-            let languages = try? JSONDecoder().decode([Language].self, from: data) {
-            
-            return languages
-        }
-        return nil
-    }
-}
-
 /// A helper class for using Google Translate API.
 public class SwiftGoogleTranslate {
     

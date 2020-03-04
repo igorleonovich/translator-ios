@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         SwiftGoogleTranslate.shared.start(with: "AIzaSyB3n5JRdcYrek-TYbKdBhhwIaGkSjSc55s")
         
-        core.getLanguages()
+        Language.updateFromServer()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

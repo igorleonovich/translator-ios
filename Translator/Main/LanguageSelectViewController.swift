@@ -18,6 +18,10 @@ class LanguageSelectViewController: UIViewController {
     
     let core: Core
     
+    var isSearchBarEmpty: Bool {
+      return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
     init(core: Core) {
         self.core = core
         super.init(nibName: nil, bundle: nil)
@@ -29,12 +33,31 @@ class LanguageSelectViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //    languages = Language.languages()
+        
+        let nib = UINib(nibName: "LanguageSelectCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "Cell")
+        
+        if let languages = Language.getFromJSON() {
+            self.languages = languages
+        }
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Language"
+        navigationItem.searchController = searchController
         definesPresentationContext = true
+    }
+}
+
+extension LanguageSelectViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return languages.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        return cell
     }
 }
 
