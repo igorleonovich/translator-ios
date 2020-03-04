@@ -25,6 +25,12 @@ public struct Language: Codable {
     }
 }
 
+extension Language: Equatable {
+    public static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.language == rhs.language
+    }
+}
+
 extension Language {
     
     static func updateFromServer() {

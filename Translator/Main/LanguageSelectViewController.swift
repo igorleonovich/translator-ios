@@ -16,14 +16,16 @@ class LanguageSelectViewController: UIViewController {
     var filteredLanguages = [Language]()
     
     let core: Core
+    var selectedLanguage: Language
     let completion: (Language) -> Void
     
     var isSearchBarEmpty: Bool {
       return searchController.searchBar.text?.isEmpty ?? true
     }
     
-    init(core: Core, completion: @escaping (Language) -> Void) {
+    init(core: Core, selectedLanguage: Language, completion: @escaping (Language) -> Void) {
         self.core = core
+        self.selectedLanguage = selectedLanguage
         self.completion = completion
         super.init(nibName: nil, bundle: nil)
     }
@@ -47,6 +49,13 @@ class LanguageSelectViewController: UIViewController {
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let index = Settings.languages.firstIndex(of: Settings.upLanguage) {
+            tableView.selectRow(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .middle)
+        }
+    }
 }
 
 extension LanguageSelectViewController: UITableViewDataSource {
@@ -59,7 +68,9 @@ extension LanguageSelectViewController: UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? LanguageSelectCell {
             cell.backgroundColor = .clear
             cell.backgroundView = UIView()
-            cell.selectedBackgroundView = UIView()
+            let selectedBackgroundView = UIView()
+            selectedBackgroundView.backgroundColor = UIColor.Blue.DeepSkyBlue
+            cell.selectedBackgroundView = selectedBackgroundView
             cell.setup(language: Settings.languages[indexPath.row])
             return cell
         }

@@ -114,7 +114,7 @@ class MainViewController: UIViewController {
     // MARK: - User Actions
     
     @objc func selectUpLanguage() {
-        let vc = LanguageSelectViewController(core: core, completion: { language in
+        let vc = LanguageSelectViewController(core: core, selectedLanguage: Settings.upLanguage, completion: { language in
             Settings.upLanguage = language
             self.updateUpLanguage()
         })
@@ -122,7 +122,7 @@ class MainViewController: UIViewController {
     }
     
     @objc func selectDownLanguage() {
-        let vc = LanguageSelectViewController(core: core, completion: { language in
+        let vc = LanguageSelectViewController(core: core, selectedLanguage: Settings.downLanguage, completion: { language in
             Settings.downLanguage = language
             self.updateDownLanguage()
         })
