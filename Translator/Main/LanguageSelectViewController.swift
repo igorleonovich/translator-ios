@@ -35,6 +35,9 @@ class LanguageSelectViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = Settings.basicColor
+        tableView.backgroundColor = Settings.basicColor
+        
         let nib = UINib(nibName: "LanguageSelectCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
         
@@ -54,6 +57,9 @@ extension LanguageSelectViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? LanguageSelectCell {
+            cell.backgroundColor = .clear
+            cell.backgroundView = UIView()
+            cell.selectedBackgroundView = UIView()
             cell.setup(language: Settings.languages[indexPath.row])
             return cell
         }

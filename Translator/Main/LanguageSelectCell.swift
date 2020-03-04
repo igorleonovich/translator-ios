@@ -15,6 +15,7 @@ class LanguageSelectCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        languageLabel.textColor = Settings.colorMode == .light ? UIColor.black : UIColor.Blue.LilyWhite
     }
     
     override func prepareForReuse() {
