@@ -11,8 +11,8 @@ import Foundation
 public struct Language: Codable {
     public let language: String
     public let name: String
-    public var flag: String {
-        switch name {
+    public var flag: String? {
+        switch language {
         case "be":
             return "by"
         case "en":
@@ -20,7 +20,7 @@ public struct Language: Codable {
         case "ru":
             return "ru"
         default:
-            return ""
+            return nil
         }
     }
 }
@@ -40,15 +40,19 @@ extension Language {
     }
     
     static func saveToJSON(_ data: Data) {
-        try? data.write(to: Constants.languagesFile)
-        print("Saved languages to \(Constants.languagesFile)")
+        if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+            let jsonData = json["data"] as? [String: Any],
+            let languagesJSON = jsonData["languages"] as? [[String: Any]],
+            let languageJSONData = try? JSONSerialization.data(withJSONObject: languagesJSON, options: []) {
+            
+            try? languageJSONData.write(to: Constants.languagesFile)
+            print("Saved languages to \(Constants.languagesFile)")
+        }
     }
     
     static func getFromJSON() -> [Language]? {
-        if let data = try? Data(contentsOf: Constants.languagesFile),
-            let languages = try? JSONDecoder().decode([Language].self, from: data) {
-            
-            return languages
+        if let data = try? Data(contentsOf: Constants.languagesFile) {
+            return try? JSONDecoder().decode([Language].self, from: data)
         }
         return nil
     }

@@ -22,6 +22,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="vrf-G2-S5y"/>
+                        <outlet property="delegate" destination="-1" id="U4V-Hh-XXz"/>
                     </connections>
                 </tableView>
             </subviews>

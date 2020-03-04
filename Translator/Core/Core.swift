@@ -10,5 +10,9 @@ import Foundation
 
 class Core {
     
-    
+    init() {
+        if let languages = Language.getFromJSON() {
+            Settings.languages = languages
+        }
+    }
 }

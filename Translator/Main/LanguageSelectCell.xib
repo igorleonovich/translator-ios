@@ -14,8 +14,34 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kW9-e3-8GV" id="eBg-5G-e25">
                 <rect key="frame" x="0.0" y="0.0" width="782" height="188"/>
                 <autoresizingMask key="autoresizingMask"/>
-                <color key="backgroundColor" red="0.01176470588" green="0.70588235290000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KKL-v1-OKX">
+                        <rect key="frame" x="20" y="69" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="5Oq-SL-tpD"/>
+                            <constraint firstAttribute="width" constant="50" id="Vky-Jo-zHh"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSn-Oz-9TW">
+                        <rect key="frame" x="90" y="83.5" width="672" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="jSn-Oz-9TW" firstAttribute="centerY" secondItem="KKL-v1-OKX" secondAttribute="centerY" id="8fN-Oe-RP3"/>
+                    <constraint firstAttribute="trailing" secondItem="jSn-Oz-9TW" secondAttribute="trailing" constant="20" id="UE8-Kb-9La"/>
+                    <constraint firstItem="jSn-Oz-9TW" firstAttribute="leading" secondItem="KKL-v1-OKX" secondAttribute="trailing" constant="20" id="YfY-2o-r6L"/>
+                    <constraint firstItem="KKL-v1-OKX" firstAttribute="centerY" secondItem="eBg-5G-e25" secondAttribute="centerY" id="dIL-78-Y5D"/>
+                    <constraint firstItem="KKL-v1-OKX" firstAttribute="leading" secondItem="eBg-5G-e25" secondAttribute="leading" constant="20" id="umw-Lr-dWC"/>
+                </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="flagImageView" destination="KKL-v1-OKX" id="0UE-Ge-5N1"/>
+                <outlet property="languageLabel" destination="jSn-Oz-9TW" id="Td2-7c-Wlb"/>
+            </connections>
             <point key="canvasLocation" x="-98.550724637681171" y="-97.098214285714278"/>
         </tableViewCell>
     </objects>

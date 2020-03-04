@@ -12,18 +12,19 @@ class LanguageSelectViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     
-    var languages = [Language]()
     let searchController = UISearchController(searchResultsController: nil)
     var filteredLanguages = [Language]()
     
     let core: Core
+    let completion: (Language) -> Void
     
     var isSearchBarEmpty: Bool {
       return searchController.searchBar.text?.isEmpty ?? true
     }
     
-    init(core: Core) {
+    init(core: Core, completion: @escaping (Language) -> Void) {
         self.core = core
+        self.completion = completion
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -37,10 +38,6 @@ class LanguageSelectViewController: UIViewController {
         let nib = UINib(nibName: "LanguageSelectCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
         
-        if let languages = Language.getFromJSON() {
-            self.languages = languages
-        }
-        
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Language"
@@ -52,12 +49,23 @@ class LanguageSelectViewController: UIViewController {
 extension LanguageSelectViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return languages.count
+        return Settings.languages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? LanguageSelectCell {
+            cell.setup(language: Settings.languages[indexPath.row])
+            return cell
+        }
+        return UITableViewCell()
+    }
+}
+
+extension LanguageSelectViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        completion(Settings.languages[indexPath.row])
+        dismiss(animated: true, completion: nil)
     }
 }
 

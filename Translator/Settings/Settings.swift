@@ -63,29 +63,31 @@ struct Settings {
         }
     }
     
+    static var languages = [Language]()
+    
     static var upLanguage: Language {
         get {
-            if let upLanguageCode = UserDefaults.standard.string(forKey: "upLanguage") {
-                return Language(language: "ru", name: "Russian")
+            if let upLanguageCode = UserDefaults.standard.string(forKey: "upLanguageCode") {
+                return languages.filter { $0.language == upLanguageCode }.first!
             } else {
                 return Language(language: "ru", name: "Russian")
             }
         }
         set {
-            UserDefaults.standard.set(newValue.language, forKey: "upLanguage")
+            UserDefaults.standard.set(newValue.language, forKey: "upLanguageCode")
         }
     }
     
     static var downLanguage: Language {
         get {
             if let downLanguageCode = UserDefaults.standard.string(forKey: "downLanguageCode") {
-                return Language(language: "en", name: "English")
+                return languages.filter { $0.language == downLanguageCode }.first!
             } else {
                 return Language(language: "en", name: "English")
             }
         }
         set {
-            UserDefaults.standard.set(newValue.language, forKey: "downLanguage")
+            UserDefaults.standard.set(newValue.language, forKey: "downLanguageCode")
         }
     }
 }

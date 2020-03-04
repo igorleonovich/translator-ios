@@ -45,6 +45,8 @@ class MainViewController: UIViewController {
         setupOfflineMode()
         setupColors()
         setupLanguagesUI()
+        updateUpLanguage()
+        updateDownLanguage()
     }
     
     // MARK: - Setup
@@ -64,11 +66,14 @@ class MainViewController: UIViewController {
             languageImageView?.round()
             languageImageView?.layer.borderWidth = 0.5
             languageImageView?.layer.borderColor = UIColor.Black.Black025Alpha.cgColor
-            
-            let tap = UITapGestureRecognizer(target: self, action: #selector(selectLanguage))
-            languageImageView?.addGestureRecognizer(tap)
-            languageImageView?.isUserInteractionEnabled = true
         }
+        let upTap = UITapGestureRecognizer(target: self, action: #selector(selectUpLanguage))
+        upLanguageImageView?.addGestureRecognizer(upTap)
+        upLanguageImageView?.isUserInteractionEnabled = true
+        
+        let downTap = UITapGestureRecognizer(target: self, action: #selector(selectDownLanguage))
+        downLanguageImageView?.addGestureRecognizer(downTap)
+        downLanguageImageView?.isUserInteractionEnabled = true
     }
     
     // MARK: - Internal Actions
@@ -90,10 +95,33 @@ class MainViewController: UIViewController {
         }
     }
     
+    private func updateUpLanguage() {
+        if let flag = Settings.upLanguage.flag {
+            upLanguageImageView.image = UIImage(named: flag)
+        }
+    }
+    
+    private func updateDownLanguage() {
+        if let flag = Settings.downLanguage.flag {
+            downLanguageImageView.image = UIImage(named: flag)
+        }
+    }
+    
     // MARK: - User Actions
     
-    @objc func selectLanguage() {
-        let vc = LanguageSelectViewController(core: core)
+    @objc func selectUpLanguage() {
+        let vc = LanguageSelectViewController(core: core, completion: { language in
+            Settings.upLanguage = language
+            self.updateUpLanguage()
+        })
+        present(vc, animated: true)
+    }
+    
+    @objc func selectDownLanguage() {
+        let vc = LanguageSelectViewController(core: core, completion: { language in
+            Settings.downLanguage = language
+            self.updateDownLanguage()
+        })
         present(vc, animated: true)
     }
     
