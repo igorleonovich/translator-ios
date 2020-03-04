@@ -52,7 +52,7 @@ class LanguageSelectViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let index = Settings.languages.firstIndex(of: Settings.upLanguage) {
+        if let index = Settings.languages.firstIndex(of: selectedLanguage) {
             tableView.selectRow(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .middle)
         }
     }
