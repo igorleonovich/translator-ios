@@ -20,6 +20,7 @@ extension UIColor {
     }
     struct Black {
         static let Black025Alpha = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25)
+        static let Gunmetal = UIColor(red: 47, green: 51, blue: 60)
     }
 }
 

@@ -13,6 +13,7 @@ class BaseViewController: UIViewController {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint?
     
     var considerBottomSafeArea = false
+    var initialBottomIndent: CGFloat = 0.0
     
     init(isModal: Bool) {
         super.init(nibName: nil, bundle: nil)
@@ -66,7 +67,7 @@ class BaseViewController: UIViewController {
     
     @objc func keyboardWillHide(_ notification: Notification) {
         guard let bottomConstraint = bottomConstraint else { return }
-        bottomConstraint.constant = 0
+        bottomConstraint.constant = initialBottomIndent
         view.setNeedsLayout()
     }
 }

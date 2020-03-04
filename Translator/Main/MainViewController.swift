@@ -24,8 +24,10 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var downLanguageImageSubView: LanguageImageSubView!
     
     
+    @IBOutlet weak var downTextView: UITextView!
+    @IBOutlet weak var downTextViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var downStackView: UIStackView!
-    var downTextView: UITextView!
+    @IBOutlet weak var downStackViewSubView: UIView!
     
     var mailVC: MFMailComposeViewController?
     
@@ -46,6 +48,9 @@ class MainViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.layer.cornerRadius = 20
+        downStackViewSubView.layer.cornerRadius = 16
+        
+        initialBottomIndent = 20.0
         
         setupOfflineMode()
         setupColors()
@@ -53,6 +58,7 @@ class MainViewController: BaseViewController {
         updateUpLanguage()
         updateDownLanguage()
         setupTextView()
+        setupTapGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,6 +93,16 @@ class MainViewController: BaseViewController {
         downLanguageImageView?.isUserInteractionEnabled = true
     }
     
+    func setupTapGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTap))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func didTap() {
+        downTextView.resignFirstResponder()
+        print("didTap")
+    }
+    
     // MARK: - Internal Actions
     
     @objc func updateRegardingToOfflineMode() {
@@ -103,6 +119,7 @@ class MainViewController: BaseViewController {
             [self.upLanguageImageSubView, self.downLanguageImageSubView].forEach { languageImageSubView in
                 languageImageSubView?.backgroundColor = Settings.colorMode == .light ? UIColor.Blue.LilyWhite : .white
             }
+            self.downStackViewSubView.backgroundColor = Settings.colorMode == .light ? UIColor.Blue.DeepSkyBlue : UIColor.Black.Gunmetal
         }
     }
     
@@ -195,12 +212,16 @@ class MainViewController: BaseViewController {
     
     override func keyboardWillShow(_ notification: Notification) {
         super.keyboardWillShow(notification)
-        [microphoneButton, microphoneButtonSubView, audioLineView].forEach { $0.isHidden = true }
+        UIView.animate(withDuration: 0.5) {
+            [self.microphoneButton, self.microphoneButtonSubView, self.audioLineView].forEach { $0.isHidden = true }
+        }
     }
     
     override func keyboardWillHide(_ notification: Notification) {
         super.keyboardWillHide(notification)
-        [microphoneButton, microphoneButtonSubView, audioLineView].forEach { $0.isHidden = false }
+        UIView.animate(withDuration: 0.5) {
+            [self.microphoneButton, self.microphoneButtonSubView, self.audioLineView].forEach { $0.isHidden = false }
+        }
     }
 }
 
@@ -218,12 +239,7 @@ extension MainViewController: MFMailComposeViewControllerDelegate {
 extension MainViewController: UITextViewDelegate {
     
     func setupTextView() {
-        downTextView = UITextView()
-        downTextView.textAlignment = .center
-        downTextView.backgroundColor = .yellow
-        downTextView.delegate = self
-        downTextView.translatesAutoresizingMaskIntoConstraints = true
-        downStackView.addArrangedSubview(downTextView)
+        
     }
     
     func textViewDidChange(_ textView: UITextView) {
@@ -235,5 +251,9 @@ extension MainViewController: UITextViewDelegate {
 //        downTextView.translatesAutoresizingMaskIntoConstraints = true
 //        downTextView.sizeToFit()
 //        textView.scrollEnabled = false
+        
+        // Assuming there is width constraint setup on the textView.
+        let targetSize = CGSize(width: downTextView.frame.width, height: CGFloat(MAXFLOAT))
+        downTextViewHeightConstraint.constant = downTextView.sizeThatFits(targetSize).height
     }
 }
