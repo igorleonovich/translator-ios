@@ -20,7 +20,7 @@ class RootViewController: BaseViewController {
     
     init(core: Core) {
         self.core = core
-        super.init()
+        super.init(isModal: false)
     }
     
     required init?(coder: NSCoder) {

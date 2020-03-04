@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class MainViewController: UIViewController {
+class MainViewController: BaseViewController {
     
     @IBOutlet weak var offlineButton: CustomButton!
     @IBOutlet weak var cameraButtonSubView: CustomButtonSubView!
@@ -23,13 +23,18 @@ class MainViewController: UIViewController {
     @IBOutlet weak var downLanguageImageView: UIImageView!
     @IBOutlet weak var downLanguageImageSubView: LanguageImageSubView!
     
+    
+    @IBOutlet weak var downStackView: UIStackView!
+    var downTextView: UITextView!
+    
     var mailVC: MFMailComposeViewController?
     
     let core: Core
     
     init(core: Core) {
         self.core = core
-        super.init(nibName: nil, bundle: nil)
+        super.init(isModal: false)
+        considerBottomSafeArea = false
     }
     
     required init?(coder: NSCoder) {
@@ -47,6 +52,12 @@ class MainViewController: UIViewController {
         setupLanguagesUI()
         updateUpLanguage()
         updateDownLanguage()
+        setupTextView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        downTextView.text = "ABC"
     }
     
     // MARK: - Setup
@@ -179,6 +190,18 @@ class MainViewController: UIViewController {
         [colorModeAction, voiceAction, contactAction, cancelAction].forEach { optionMenu.addAction($0) }
         self.parent?.present(optionMenu, animated: true, completion: nil)
     }
+    
+    // MARK: - Keyboard
+    
+    override func keyboardWillShow(_ notification: Notification) {
+        super.keyboardWillShow(notification)
+        [microphoneButton, microphoneButtonSubView, audioLineView].forEach { $0.isHidden = true }
+    }
+    
+    override func keyboardWillHide(_ notification: Notification) {
+        super.keyboardWillHide(notification)
+        [microphoneButton, microphoneButtonSubView, audioLineView].forEach { $0.isHidden = false }
+    }
 }
 
 extension MainViewController: MFMailComposeViewControllerDelegate {
@@ -189,5 +212,28 @@ extension MainViewController: MFMailComposeViewControllerDelegate {
         if let error = error {
             print(error)
         }
+    }
+}
+
+extension MainViewController: UITextViewDelegate {
+    
+    func setupTextView() {
+        downTextView = UITextView()
+        downTextView.textAlignment = .center
+        downTextView.backgroundColor = .yellow
+        downTextView.delegate = self
+        downTextView.translatesAutoresizingMaskIntoConstraints = true
+        downStackView.addArrangedSubview(downTextView)
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        adjustUITextViewHeight()
+    }
+    
+    func adjustUITextViewHeight()
+    {
+//        downTextView.translatesAutoresizingMaskIntoConstraints = true
+//        downTextView.sizeToFit()
+//        textView.scrollEnabled = false
     }
 }

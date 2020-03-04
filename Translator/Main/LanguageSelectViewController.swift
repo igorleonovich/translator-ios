@@ -8,13 +8,11 @@
 
 import UIKit
 
-class LanguageSelectViewController: UIViewController {
+class LanguageSelectViewController: BaseViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     var realSearchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
-    
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     let searchController = UISearchController(searchResultsController: nil)
     var filteredLanguages = [Language]()
@@ -35,7 +33,7 @@ class LanguageSelectViewController: UIViewController {
         self.core = core
         self.selectedLanguage = selectedLanguage
         self.completion = completion
-        super.init(nibName: nil, bundle: nil)
+        super.init(isModal: true)
     }
     
     required init?(coder: NSCoder) {
@@ -49,7 +47,6 @@ class LanguageSelectViewController: UIViewController {
         tableView.register(nib, forCellReuseIdentifier: "Cell")
         
         setupSearch()
-        setupKeyboard()
         setupColors()
     }
     
@@ -68,30 +65,6 @@ class LanguageSelectViewController: UIViewController {
     private func setupColors() {
         view.backgroundColor = Settings.basicColor
         tableView.backgroundColor = Settings.basicColor
-    }
-    
-    private func setupKeyboard() {
-        let notifier = NotificationCenter.default
-        notifier.addObserver(self,
-                             selector: #selector(keyboardWillShow(_:)),
-                             name: UIWindow.keyboardWillShowNotification,
-                             object: nil)
-        notifier.addObserver(self,
-                             selector: #selector(keyboardWillHide(_:)),
-                             name: UIWindow.keyboardWillHideNotification,
-                             object: nil)
-    }
-    
-    @objc func keyboardWillShow(_ notification: Notification) {
-        guard let userInfo = notification.userInfo, let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
-        let keyboardHeight = keyboardFrame.height - Device.bottomSafeAreaInsets
-        bottomConstraint.constant = keyboardHeight
-        view.layoutIfNeeded()
-    }
-    
-    @objc func keyboardWillHide(_ notification: Notification) {
-        bottomConstraint.constant = 0
-        view.setNeedsLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {

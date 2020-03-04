@@ -10,9 +10,15 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
-    init() {
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint?
+    
+    var considerBottomSafeArea = false
+    
+    init(isModal: Bool) {
         super.init(nibName: nil, bundle: nil)
-        self.modalSetup()
+        if !isModal {
+            self.modalSetup()
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -21,6 +27,7 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupKeyboard()
     }
     
     private func modalSetup() {
@@ -31,5 +38,35 @@ class BaseViewController: UIViewController {
         if #available(iOS 13.0, *) {
             isModalInPresentation = true
         }
+    }
+    
+    private func setupKeyboard() {
+        let notifier = NotificationCenter.default
+        notifier.addObserver(self,
+                             selector: #selector(keyboardWillShow(_:)),
+                             name: UIWindow.keyboardWillShowNotification,
+                             object: nil)
+        notifier.addObserver(self,
+                             selector: #selector(keyboardWillHide(_:)),
+                             name: UIWindow.keyboardWillHideNotification,
+                             object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        guard let bottomConstraint = bottomConstraint,
+            let userInfo = notification.userInfo,
+            let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+        var shiftHeight = keyboardFrame.height
+        if considerBottomSafeArea {
+            shiftHeight -= Device.bottomSafeAreaInsets
+        }
+        bottomConstraint.constant = shiftHeight
+        view.layoutIfNeeded()
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        guard let bottomConstraint = bottomConstraint else { return }
+        bottomConstraint.constant = 0
+        view.setNeedsLayout()
     }
 }

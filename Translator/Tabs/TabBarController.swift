@@ -30,11 +30,11 @@ extension TabBarController: MDVTabBarControllerDataSource {
     }
     
     func tabBarControllerViewControllers() -> [MDVTabbableViewController] {
-        return [SpeechTranslationViewController(),
-        TextTranslationViewController(),
-        ImageTranslationViewController(),
-        KeyboardTranslationViewController(),
-        SettingsViewController()]
+        return [SpeechTranslationViewController(isModal: false),
+                TextTranslationViewController(isModal: false),
+                ImageTranslationViewController(isModal: false),
+                KeyboardTranslationViewController(isModal: false),
+                SettingsViewController()]
     }
     
     func tabBarHeight() -> CGFloat {
