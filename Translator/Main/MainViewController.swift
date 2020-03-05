@@ -60,6 +60,8 @@ class MainViewController: BaseViewController {
         updateDownLanguage()
         setupTextView()
         setupTapGesture()
+        
+        resetTexts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -118,7 +120,7 @@ class MainViewController: BaseViewController {
             [self.upLanguageImageSubView, self.downLanguageImageSubView].forEach { languageImageSubView in
                 languageImageSubView?.backgroundColor = Settings.colorMode == .light ? UIColor.Blue.LilyWhite : .white
             }
-            self.downLabelSubView.backgroundColor = Settings.colorMode == .light ? UIColor.Blue.DeepSkyBlue : UIColor.Black.Gunmetal
+            self.downLabelSubView.backgroundColor = Settings.colorMode == .light ? UIColor.Blue.LilyWhite : UIColor.Black.Gunmetal
         }
     }
     
@@ -136,6 +138,27 @@ class MainViewController: BaseViewController {
         } else {
             self.downLanguageImageView.image = nil
         }
+    }
+    
+    private func resetTexts() {
+        let string = "Tap to enter text"
+        let attributedString = NSMutableAttributedString(string: string)
+        
+        var attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.Blue.DeepSkyBlue,
+            .font: UIFont.boldSystemFont(ofSize: 18)
+        ]
+        var range = NSRange(location: 0, length: 3)
+        attributedString.addAttributes(attributes, range: range)
+        
+        attributes = [
+            .foregroundColor: UIColor.Black.MidGray
+        ]
+        range = NSRange(location: 4, length: string.count - 4)
+        attributedString.addAttributes(attributes, range: range)
+        
+        downLabel.attributedText = attributedString
+        downLabel.isHidden = false
     }
     
     // MARK: - User Actions
