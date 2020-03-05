@@ -24,10 +24,11 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var downLanguageImageSubView: LanguageImageSubView!
     
     
-    @IBOutlet weak var downTextView: UITextView!
+    @IBOutlet weak var downTextView: UITextViewFixed!
     @IBOutlet weak var downTextViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var downStackView: UIStackView!
-    @IBOutlet weak var downStackViewSubView: UIView!
+    @IBOutlet weak var downLabel: UILabel!
+    @IBOutlet weak var downLabelSubView: UIView!
     
     var mailVC: MFMailComposeViewController?
     
@@ -48,7 +49,7 @@ class MainViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.layer.cornerRadius = 20
-        downStackViewSubView.layer.cornerRadius = 16
+        downLabelSubView.layer.cornerRadius = 16
         
         initialBottomIndent = 20.0
         
@@ -119,7 +120,7 @@ class MainViewController: BaseViewController {
             [self.upLanguageImageSubView, self.downLanguageImageSubView].forEach { languageImageSubView in
                 languageImageSubView?.backgroundColor = Settings.colorMode == .light ? UIColor.Blue.LilyWhite : .white
             }
-            self.downStackViewSubView.backgroundColor = Settings.colorMode == .light ? UIColor.Blue.DeepSkyBlue : UIColor.Black.Gunmetal
+            self.downLabelSubView.backgroundColor = Settings.colorMode == .light ? UIColor.Blue.DeepSkyBlue : UIColor.Black.Gunmetal
         }
     }
     
@@ -244,6 +245,7 @@ extension MainViewController: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         adjustUITextViewHeight()
+        downLabel.text = textView.text
     }
     
     func adjustUITextViewHeight()
@@ -256,4 +258,15 @@ extension MainViewController: UITextViewDelegate {
         let targetSize = CGSize(width: downTextView.frame.width, height: CGFloat(MAXFLOAT))
         downTextViewHeightConstraint.constant = downTextView.sizeThatFits(targetSize).height
     }
+}
+
+@IBDesignable class UITextViewFixed: UITextView {
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        setup()
+//    }
+//    func setup() {
+//        textContainerInset = UIEdgeInsets.zero
+//        textContainer.lineFragmentPadding = 0
+//    }
 }
