@@ -304,6 +304,7 @@
 		0BCC35F8240F89A700C7F4E5 /* LanguageSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BCC35F7240F89A700C7F4E5 /* LanguageSelectCell.xib */; };
 		0BCC35FA240F8A0C00C7F4E5 /* LanguageSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCC35F9240F8A0C00C7F4E5 /* LanguageSelectCell.swift */; };
 		0BCC35FE24100AAD00C7F4E5 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCC35FD24100AAD00C7F4E5 /* Device.swift */; };
+		0BCC360024115A5800C7F4E5 /* DotsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCC35FF24115A5800C7F4E5 /* DotsLoader.swift */; };
 		0D537DC38426025B3D6297C5 /* Pods_Translator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD843D5FA36A96DB06F1ADF /* Pods_Translator.framework */; };
 /* End PBXBuildFile section */
 
@@ -607,6 +608,7 @@
 		0BCC35F7240F89A700C7F4E5 /* LanguageSelectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageSelectCell.xib; sourceTree = "<group>"; };
 		0BCC35F9240F8A0C00C7F4E5 /* LanguageSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectCell.swift; sourceTree = "<group>"; };
 		0BCC35FD24100AAD00C7F4E5 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		0BCC35FF24115A5800C7F4E5 /* DotsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsLoader.swift; sourceTree = "<group>"; };
 		303CFFA7FCB8F811455986A6 /* Pods-Translator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translator.debug.xcconfig"; path = "Target Support Files/Pods-Translator/Pods-Translator.debug.xcconfig"; sourceTree = "<group>"; };
 		4BD843D5FA36A96DB06F1ADF /* Pods_Translator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Translator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD254710EE1F9DF8B86CC33 /* Pods-Translator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translator.release.xcconfig"; path = "Target Support Files/Pods-Translator/Pods-Translator.release.xcconfig"; sourceTree = "<group>"; };
@@ -1120,6 +1122,7 @@
 			isa = PBXGroup;
 			children = (
 				0BCC35FD24100AAD00C7F4E5 /* Device.swift */,
+				0BCC35FF24115A5800C7F4E5 /* DotsLoader.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1496,6 +1499,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BCC360024115A5800C7F4E5 /* DotsLoader.swift in Sources */,
 				0BCC35EE240EB10000C7F4E5 /* LanguageSelectViewController.swift in Sources */,
 				0B0D5F66240E7FB00052A3E4 /* Settings.swift in Sources */,
 				0B74085B24080D7400ECC102 /* ImageTranslationViewController.swift in Sources */,

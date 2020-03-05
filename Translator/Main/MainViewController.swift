@@ -28,11 +28,13 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var upTextViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var upLabel: UILabel!
     @IBOutlet weak var upLabelSubView: UIView!
+    @IBOutlet weak var upDotsView: DotsLoader!
     
     @IBOutlet weak var downTextView: UITextViewFixed!
     @IBOutlet weak var downTextViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var downLabel: UILabel!
     @IBOutlet weak var downLabelSubView: UIView!
+    @IBOutlet weak var downDotsView: DotsLoader!
     
     var mailVC: MFMailComposeViewController?
     
@@ -303,35 +305,43 @@ extension MainViewController: UITextViewDelegate {
         }
         
         if textView.text.count > 0 {
-            if textView == upTextView {
-                SwiftGoogleTranslate.shared.translate(textView.text, Settings.upLanguage.language, Settings.downLanguage.language) { [weak self] (result, error) in
-                    DispatchQueue.main.async {
-                        if let error = error {
-                            print(error)
-                        } else if let result = result {
-                            print(result)
-                            guard let `self` = self else { return }
-                            self.downTextView.text = result
-                        }
-                    }
-                }
-            } else {
-                SwiftGoogleTranslate.shared.translate(textView.text, Settings.downLanguage.language, Settings.upLanguage.language) { [weak self] (result, error) in
-                    DispatchQueue.main.async {
-                        if let error = error {
-                            print(error)
-                        } else if let result = result {
-                            print(result)
-                            guard let `self` = self else { return }
-                            self.upTextView.text = result
-                        }
-                    }
-                }
-            }
+            translate(textView: textView)
         } else {
             showPlaceholderLabels()
         }
         return true
+    }
+    
+    private func translate(textView: UITextView) {
+        if textView == upTextView {
+            downDotsView.isHidden = false
+            SwiftGoogleTranslate.shared.translate(textView.text, Settings.downLanguage.language, Settings.upLanguage.language) { [weak self] (result, error) in
+                DispatchQueue.main.async {
+                    guard let `self` = self else { return }
+                    if let error = error {
+                        print(error)
+                    } else if let result = result {
+                        print(result)
+                        self.downTextView.text = result
+                    }
+                    self.downDotsView.isHidden = true
+                }
+            }
+        } else {
+            upDotsView.isHidden = false
+            SwiftGoogleTranslate.shared.translate(textView.text, Settings.upLanguage.language, Settings.downLanguage.language) { [weak self] (result, error) in
+                DispatchQueue.main.async {
+                    guard let `self` = self else { return }
+                    if let error = error {
+                        print(error)
+                    } else if let result = result {
+                        print(result)
+                        self.upTextView.text = result
+                    }
+                    self.upDotsView.isHidden = true
+                }
+            }
+        }
     }
     
     func adjustUITextViewHeight() {

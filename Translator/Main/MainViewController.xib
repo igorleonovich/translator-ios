@@ -13,6 +13,7 @@
                 <outlet property="bottomConstraint" destination="Hc1-Oh-P94" id="kSs-Dt-K3D"/>
                 <outlet property="cameraButton" destination="PMb-Wc-O6c" id="ahf-qp-R5Q"/>
                 <outlet property="cameraButtonSubView" destination="9f4-MD-tv9" id="IMl-q6-mGc"/>
+                <outlet property="downDotsView" destination="rT9-af-fYl" id="FEc-f8-2vf"/>
                 <outlet property="downLabel" destination="Bu9-rj-E7V" id="3H5-IW-KJp"/>
                 <outlet property="downLabelSubView" destination="8dd-Iw-HlD" id="cfz-Fd-cZm"/>
                 <outlet property="downLanguageImageSubView" destination="Wy0-Kv-WRr" id="4ps-3b-Rd3"/>
@@ -23,6 +24,7 @@
                 <outlet property="microphoneButtonSubView" destination="MPN-8u-jzX" id="Sm9-b2-npr"/>
                 <outlet property="offlineButton" destination="aIT-7x-yxy" id="uBG-Td-D1i"/>
                 <outlet property="settingsButton" destination="dXp-gZ-zV1" id="clH-zM-Xld"/>
+                <outlet property="upDotsView" destination="VQK-Zs-rna" id="Azw-pf-SZY"/>
                 <outlet property="upLabel" destination="yGt-zP-DrV" id="cT9-wS-eld"/>
                 <outlet property="upLabelSubView" destination="Bqn-Ev-X4f" id="zat-sv-x7O"/>
                 <outlet property="upLanguageImageSubView" destination="BII-Dk-ML0" id="Vwi-Yi-sbR"/>
@@ -52,6 +54,22 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bqn-Ev-X4f">
                     <rect key="frame" x="60" y="105" width="200" height="51"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQK-Zs-rna" customClass="DotsLoader" customModule="Translator" customModuleProvider="target">
+                    <rect key="frame" x="60" y="105" width="200" height="51"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="dotsCount">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="dotsRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="dotsSpacing">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGt-zP-DrV">
                     <rect key="frame" x="80" y="120" width="160" height="21"/>
@@ -103,6 +121,22 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8dd-Iw-HlD">
                     <rect key="frame" x="60" y="412" width="200" height="51"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rT9-af-fYl" customClass="DotsLoader" customModule="Translator" customModuleProvider="target">
+                    <rect key="frame" x="60" y="412" width="200" height="51"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="dotsCount">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="dotsRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="dotsSpacing">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bu9-rj-E7V">
                     <rect key="frame" x="80" y="427" width="160" height="21"/>
@@ -209,6 +243,7 @@
                 <constraint firstItem="vRF-gR-MXB" firstAttribute="trailing" secondItem="aIT-7x-yxy" secondAttribute="trailing" constant="2" id="C7M-02-8am"/>
                 <constraint firstItem="0EL-pd-Yuz" firstAttribute="top" secondItem="Bu9-rj-E7V" secondAttribute="bottom" constant="40" id="D7E-3v-WTL"/>
                 <constraint firstItem="yGt-zP-DrV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="DG5-72-gmC"/>
+                <constraint firstItem="rT9-af-fYl" firstAttribute="leading" secondItem="8dd-Iw-HlD" secondAttribute="leading" id="EZB-lb-Apx"/>
                 <constraint firstItem="vRF-gR-MXB" firstAttribute="leading" secondItem="aIT-7x-yxy" secondAttribute="leading" constant="-2" id="EmR-vX-cwx"/>
                 <constraint firstItem="PMb-Wc-O6c" firstAttribute="centerY" secondItem="gR0-oa-rBW" secondAttribute="centerY" id="F4V-eq-iAA"/>
                 <constraint firstItem="jvo-bd-sQC" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="Fhu-aS-uJV"/>
@@ -223,11 +258,14 @@
                 <constraint firstItem="Bqn-Ev-X4f" firstAttribute="bottom" secondItem="yGt-zP-DrV" secondAttribute="bottom" constant="15" id="Lx3-Al-VaT"/>
                 <constraint firstItem="Bu9-rj-E7V" firstAttribute="centerX" secondItem="0EL-pd-Yuz" secondAttribute="centerX" id="NUp-rs-VKW"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="PMb-Wc-O6c" secondAttribute="trailing" constant="20" id="Poi-hN-7Xe"/>
+                <constraint firstItem="VQK-Zs-rna" firstAttribute="trailing" secondItem="Bqn-Ev-X4f" secondAttribute="trailing" id="Pqy-MV-vDK"/>
+                <constraint firstItem="VQK-Zs-rna" firstAttribute="top" secondItem="Bqn-Ev-X4f" secondAttribute="top" id="R90-v7-tEL"/>
                 <constraint firstItem="jvo-bd-sQC" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Scd-8t-DBE"/>
                 <constraint firstItem="dXp-gZ-zV1" firstAttribute="centerY" secondItem="0EL-pd-Yuz" secondAttribute="centerY" id="StH-cA-r35"/>
                 <constraint firstItem="0EL-pd-Yuz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="yGt-zP-DrV" secondAttribute="bottom" constant="40" id="VME-29-6bX"/>
                 <constraint firstItem="gR0-oa-rBW" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Vh3-BH-sOL"/>
                 <constraint firstItem="yGt-zP-DrV" firstAttribute="centerX" secondItem="gR0-oa-rBW" secondAttribute="centerX" id="WQN-Kz-oEb"/>
+                <constraint firstItem="rT9-af-fYl" firstAttribute="bottom" secondItem="8dd-Iw-HlD" secondAttribute="bottom" id="XFx-41-nnW"/>
                 <constraint firstItem="Wy0-Kv-WRr" firstAttribute="top" secondItem="0EL-pd-Yuz" secondAttribute="top" constant="-4" id="Y6M-mJ-6K6"/>
                 <constraint firstItem="vRF-gR-MXB" firstAttribute="bottom" secondItem="aIT-7x-yxy" secondAttribute="bottom" constant="2" id="Zzn-6S-OHP"/>
                 <constraint firstItem="8dd-Iw-HlD" firstAttribute="trailing" secondItem="Bu9-rj-E7V" secondAttribute="trailing" constant="20" id="aTQ-KU-qhU"/>
@@ -237,7 +275,9 @@
                 <constraint firstItem="MPN-8u-jzX" firstAttribute="trailing" secondItem="jvo-bd-sQC" secondAttribute="trailing" constant="2" id="d11-KR-d6q"/>
                 <constraint firstItem="Bu9-rj-E7V" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="fVx-6f-Pbw"/>
                 <constraint firstItem="VVu-rO-tzA" firstAttribute="trailing" secondItem="dXp-gZ-zV1" secondAttribute="trailing" constant="2" id="fqc-Kx-cKH"/>
+                <constraint firstItem="VQK-Zs-rna" firstAttribute="bottom" secondItem="Bqn-Ev-X4f" secondAttribute="bottom" id="ftd-4M-nAa"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="u2e-7q-RAw" secondAttribute="trailing" constant="30" id="fxf-Me-row"/>
+                <constraint firstItem="rT9-af-fYl" firstAttribute="trailing" secondItem="8dd-Iw-HlD" secondAttribute="trailing" id="gzd-KI-GLM"/>
                 <constraint firstAttribute="trailing" secondItem="shj-lj-AeU" secondAttribute="trailing" id="hrc-eG-wQS"/>
                 <constraint firstItem="u2e-7q-RAw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gR0-oa-rBW" secondAttribute="bottom" constant="38" id="jeA-EN-0K9"/>
                 <constraint firstItem="8dd-Iw-HlD" firstAttribute="leading" secondItem="Bu9-rj-E7V" secondAttribute="leading" constant="-20" id="jgn-bR-Ub6"/>
@@ -246,9 +286,11 @@
                 <constraint firstItem="Bqn-Ev-X4f" firstAttribute="top" secondItem="yGt-zP-DrV" secondAttribute="top" constant="-15" id="lJp-1R-NbQ"/>
                 <constraint firstItem="shj-lj-AeU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lOw-aE-Wn5"/>
                 <constraint firstItem="0EL-pd-Yuz" firstAttribute="top" secondItem="u2e-7q-RAw" secondAttribute="bottom" constant="40" id="mEh-Gd-L4X"/>
+                <constraint firstItem="VQK-Zs-rna" firstAttribute="leading" secondItem="Bqn-Ev-X4f" secondAttribute="leading" id="mEy-eO-00j"/>
                 <constraint firstItem="6jy-fe-mV2" firstAttribute="top" secondItem="gR0-oa-rBW" secondAttribute="bottom" constant="40" id="muM-6Q-x6N"/>
                 <constraint firstItem="vRF-gR-MXB" firstAttribute="top" secondItem="aIT-7x-yxy" secondAttribute="top" constant="-2" id="p94-JT-QfD"/>
                 <constraint firstItem="Wy0-Kv-WRr" firstAttribute="trailing" secondItem="0EL-pd-Yuz" secondAttribute="trailing" constant="4" id="pz9-pB-z3b"/>
+                <constraint firstItem="rT9-af-fYl" firstAttribute="top" secondItem="8dd-Iw-HlD" secondAttribute="top" id="qSJ-z0-SqN"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yGt-zP-DrV" secondAttribute="trailing" constant="30" id="rtn-Hl-37e"/>
                 <constraint firstItem="MPN-8u-jzX" firstAttribute="leading" secondItem="jvo-bd-sQC" secondAttribute="leading" constant="-2" id="uGF-8V-viM"/>
                 <constraint firstItem="BII-Dk-ML0" firstAttribute="bottom" secondItem="gR0-oa-rBW" secondAttribute="bottom" constant="4" id="uTX-Vq-LVi"/>
