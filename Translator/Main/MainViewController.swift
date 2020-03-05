@@ -64,7 +64,6 @@ class MainViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        downTextView.text = "ABC"
     }
     
     // MARK: - Setup
@@ -261,12 +260,12 @@ extension MainViewController: UITextViewDelegate {
 }
 
 @IBDesignable class UITextViewFixed: UITextView {
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        setup()
-//    }
-//    func setup() {
-//        textContainerInset = UIEdgeInsets.zero
-//        textContainer.lineFragmentPadding = 0
-//    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setup()
+    }
+    func setup() {
+        textContainerInset = UIEdgeInsets.zero
+        textContainer.lineFragmentPadding = 0
+    }
 }
