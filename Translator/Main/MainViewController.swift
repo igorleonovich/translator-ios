@@ -26,7 +26,6 @@ class MainViewController: BaseViewController {
     
     @IBOutlet weak var downTextView: UITextViewFixed!
     @IBOutlet weak var downTextViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var downStackView: UIStackView!
     @IBOutlet weak var downLabel: UILabel!
     @IBOutlet weak var downLabelSubView: UIView!
     
