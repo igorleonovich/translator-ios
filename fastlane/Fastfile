@@ -12,7 +12,7 @@ platform :ios do
         firebase_app_distribution(
             app: "1:990997999049:ios:ba4ca68e1c4338abc00c18",
             testers: "igorlnvch@gmail.com, alexandr.mihalkevich@gmail.com",
-            release_notes: "Add up textview, placeholder label"
+            release_notes: "Add text translation"
         )
 
     end
