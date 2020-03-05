@@ -38,6 +38,8 @@ class MainViewController: BaseViewController {
     
     let core: Core
     
+    var lastEnteredText: String?
+    
     init(core: Core) {
         self.core = core
         super.init(isModal: false)
@@ -62,10 +64,9 @@ class MainViewController: BaseViewController {
         setupLanguagesUI()
         updateUpLanguage()
         updateDownLanguage()
-        setupTextView()
         setupTapGesture()
         
-        resetTexts()
+        showPlaceholderLabels()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -145,7 +146,7 @@ class MainViewController: BaseViewController {
         }
     }
     
-    private func resetTexts() {
+    private func showPlaceholderLabels() {
         let string = "Tap to enter text"
         let attributedString = NSMutableAttributedString(string: string)
         
@@ -267,10 +268,6 @@ extension MainViewController: MFMailComposeViewControllerDelegate {
 
 extension MainViewController: UITextViewDelegate {
     
-    func setupTextView() {
-        
-    }
-    
     func textViewDidChange(_ textView: UITextView) {
         adjustUITextViewHeight()
         if textView == downTextView {
@@ -278,7 +275,63 @@ extension MainViewController: UITextViewDelegate {
         } else {
             upLabel.text = textView.text
         }
+    }
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        print("textViewShouldBeginEditing")
         
+        [upLabel, downLabel].forEach { $0.isHidden = true }
+        
+        if textView == upTextView {
+            [downLabelSubView, downTextView].forEach { $0.isHidden = true }
+        } else {
+            [upLabelSubView, upTextView].forEach { $0.isHidden = true }
+        }
+        
+        lastEnteredText = textView.text
+        textView.text = nil
+        return true
+    }
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        print("textViewShouldEndEditing")
+        
+        if textView == upTextView {
+            [downLabelSubView, downTextView].forEach { $0.isHidden = false }
+        } else {
+            [upLabelSubView, upTextView].forEach { $0.isHidden = false }
+        }
+        
+        if textView.text.count > 0 {
+            if textView == upTextView {
+                SwiftGoogleTranslate.shared.translate(textView.text, Settings.upLanguage.language, Settings.downLanguage.language) { [weak self] (result, error) in
+                    DispatchQueue.main.async {
+                        if let error = error {
+                            print(error)
+                        } else if let result = result {
+                            print(result)
+                            guard let `self` = self else { return }
+                            self.downTextView.text = result
+                        }
+                    }
+                }
+            } else {
+                SwiftGoogleTranslate.shared.translate(textView.text, Settings.downLanguage.language, Settings.upLanguage.language) { [weak self] (result, error) in
+                    DispatchQueue.main.async {
+                        if let error = error {
+                            print(error)
+                        } else if let result = result {
+                            print(result)
+                            guard let `self` = self else { return }
+                            self.upTextView.text = result
+                        }
+                    }
+                }
+            }
+        } else {
+            showPlaceholderLabels()
+        }
+        return true
     }
     
     func adjustUITextViewHeight() {
@@ -288,6 +341,7 @@ extension MainViewController: UITextViewDelegate {
 }
 
 @IBDesignable class UITextViewFixed: UITextView {
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         setup()
