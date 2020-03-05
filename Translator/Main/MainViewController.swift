@@ -24,6 +24,11 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var downLanguageImageSubView: LanguageImageSubView!
     
     
+    @IBOutlet weak var upTextView: UITextViewFixed!
+    @IBOutlet weak var upTextViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var upLabel: UILabel!
+    @IBOutlet weak var upLabelSubView: UIView!
+    
     @IBOutlet weak var downTextView: UITextViewFixed!
     @IBOutlet weak var downTextViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var downLabel: UILabel!
@@ -48,7 +53,7 @@ class MainViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.layer.cornerRadius = 20
-        downLabelSubView.layer.cornerRadius = 25.75
+        [downLabelSubView, upLabelSubView].forEach { $0.layer.cornerRadius = 25.75 }
         
         initialBottomIndent = 20.0
         
@@ -100,6 +105,7 @@ class MainViewController: BaseViewController {
     }
     
     @objc func didTap() {
+        upTextView.resignFirstResponder()
         downTextView.resignFirstResponder()
     }
     
@@ -119,7 +125,7 @@ class MainViewController: BaseViewController {
             [self.upLanguageImageSubView, self.downLanguageImageSubView].forEach { languageImageSubView in
                 languageImageSubView?.backgroundColor = Settings.colorMode == .light ? UIColor.Blue.LilyWhite : .white
             }
-            self.downLabelSubView.backgroundColor = Settings.colorMode == .light ? UIColor.Blue.LilyWhite : UIColor.Black.Gunmetal
+            [self.upLabelSubView, self.downLabelSubView].forEach { $0.backgroundColor = Settings.colorMode == .light ? UIColor.Blue.LilyWhite : UIColor.Black.Gunmetal }
         }
     }
     
@@ -156,8 +162,10 @@ class MainViewController: BaseViewController {
         range = NSRange(location: 4, length: string.count - 4)
         attributedString.addAttributes(attributes, range: range)
         
-        downLabel.attributedText = attributedString
-        downLabel.isHidden = false
+        [upLabel, downLabel].forEach { label in
+            label?.attributedText = attributedString
+            label?.isHidden = false
+        }
     }
     
     // MARK: - User Actions
@@ -265,7 +273,12 @@ extension MainViewController: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         adjustUITextViewHeight()
-        downLabel.text = textView.text
+        if textView == downTextView {
+            downLabel.text = textView.text
+        } else {
+            upLabel.text = textView.text
+        }
+        
     }
     
     func adjustUITextViewHeight() {
