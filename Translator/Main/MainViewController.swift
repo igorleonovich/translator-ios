@@ -40,7 +40,8 @@ class MainViewController: BaseViewController {
     
     let core: Core
     
-    var lastEnteredText: String?
+    var upLastEnteredText: String?
+    var downLastEnteredText: String?
     
     init(core: Core) {
         self.core = core
@@ -285,12 +286,13 @@ extension MainViewController: UITextViewDelegate {
         [upLabel, downLabel].forEach { $0.isHidden = true }
         
         if textView == upTextView {
+            upLastEnteredText = textView.text
             [downLabelSubView, downTextView].forEach { $0.isHidden = true }
         } else {
+            downLastEnteredText = textView.text
             [upLabelSubView, upTextView].forEach { $0.isHidden = true }
         }
         
-        lastEnteredText = textView.text
         textView.text = nil
         return true
     }
@@ -300,15 +302,28 @@ extension MainViewController: UITextViewDelegate {
         
         if textView == upTextView {
             [downLabelSubView, downTextView].forEach { $0.isHidden = false }
+            if textView.text.count > 0 {
+                translate(textView: textView)
+            } else {
+                if let upLastEnteredText = upLastEnteredText {
+                    textView.text = upLastEnteredText
+                } else {
+                    showPlaceholderLabels()
+                }
+            }
         } else {
             [upLabelSubView, upTextView].forEach { $0.isHidden = false }
+            if textView.text.count > 0 {
+                translate(textView: textView)
+            } else {
+                if let downLastEnteredText = downLastEnteredText {
+                    textView.text = downLastEnteredText
+                } else {
+                    showPlaceholderLabels()
+                }
+            }
         }
         
-        if textView.text.count > 0 {
-            translate(textView: textView)
-        } else {
-            showPlaceholderLabels()
-        }
         return true
     }
     
