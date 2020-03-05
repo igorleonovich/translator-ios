@@ -49,7 +49,7 @@ class MainViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.layer.cornerRadius = 20
-        downLabelSubView.layer.cornerRadius = 16
+        downLabelSubView.layer.cornerRadius = 25.75
         
         initialBottomIndent = 20.0
         
@@ -100,7 +100,6 @@ class MainViewController: BaseViewController {
     
     @objc func didTap() {
         downTextView.resignFirstResponder()
-        print("didTap")
     }
     
     // MARK: - Internal Actions
@@ -247,13 +246,7 @@ extension MainViewController: UITextViewDelegate {
         downLabel.text = textView.text
     }
     
-    func adjustUITextViewHeight()
-    {
-//        downTextView.translatesAutoresizingMaskIntoConstraints = true
-//        downTextView.sizeToFit()
-//        textView.scrollEnabled = false
-        
-        // Assuming there is width constraint setup on the textView.
+    func adjustUITextViewHeight() {
         let targetSize = CGSize(width: downTextView.frame.width, height: CGFloat(MAXFLOAT))
         downTextViewHeightConstraint.constant = downTextView.sizeThatFits(targetSize).height
     }
