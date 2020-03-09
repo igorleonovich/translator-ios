@@ -115,6 +115,7 @@
                     <inset key="imageEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                     <state key="normal" image="mic.fill" catalog="system"/>
                     <connections>
+                        <action selector="pressMicrophoneButton:" destination="-1" eventType="touchUpInside" id="Uyr-aR-lsC"/>
                         <outlet property="customButtonSubView" destination="MPN-8u-jzX" id="5PJ-j8-HvN"/>
                     </connections>
                 </button>

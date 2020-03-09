@@ -12,7 +12,7 @@ platform :ios do
         firebase_app_distribution(
             app: "1:990997999049:ios:ba4ca68e1c4338abc00c18",
             testers: "igorlnvch@gmail.com, alexandr.mihalkevich@gmail.com",
-            release_notes: "Fix text translation, add dots loader view, handle text input cancellation"
+            release_notes: "Add speech recognition service"
         )
     end
 end

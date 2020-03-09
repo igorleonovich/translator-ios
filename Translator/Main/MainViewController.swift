@@ -8,6 +8,10 @@
 
 import UIKit
 import MessageUI
+import AVFoundation
+import googleapis
+
+let SAMPLE_RATE = 16000
 
 class MainViewController: BaseViewController {
     
@@ -22,7 +26,6 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var upLanguageImageSubView: LanguageImageSubView!
     @IBOutlet weak var downLanguageImageView: UIImageView!
     @IBOutlet weak var downLanguageImageSubView: LanguageImageSubView!
-    
     
     @IBOutlet weak var upTextView: UITextViewFixed!
     @IBOutlet weak var upTextViewHeightConstraint: NSLayoutConstraint!
@@ -42,6 +45,11 @@ class MainViewController: BaseViewController {
     
     var upLastEnteredText: String?
     var downLastEnteredText: String?
+    
+    var audioData: NSMutableData!
+    var isRecording = false
+//    var lastRecognizedSpeechData: Data?
+    var lastRecognizedResult: StreamingRecognitionResult?
     
     init(core: Core) {
         self.core = core
@@ -68,6 +76,8 @@ class MainViewController: BaseViewController {
         updateUpLanguage()
         updateDownLanguage()
         setupTapGesture()
+        
+        setupAudio()
         
         showPlaceholderLabels()
     }
@@ -108,9 +118,8 @@ class MainViewController: BaseViewController {
         view.addGestureRecognizer(tap)
     }
     
-    @objc func didTap() {
-        upTextView.resignFirstResponder()
-        downTextView.resignFirstResponder()
+    func setupAudio() {
+        AudioController.sharedInstance.delegate = self
     }
     
     // MARK: - Internal Actions
@@ -172,7 +181,18 @@ class MainViewController: BaseViewController {
         }
     }
     
+    private func hidePlaceholderLabels() {
+        [upLabel, downLabel].forEach { label in
+            label?.isHidden = true
+        }
+    }
+    
     // MARK: - User Actions
+    
+    @objc func didTap() {
+        upTextView.resignFirstResponder()
+        downTextView.resignFirstResponder()
+    }
     
     @objc func selectUpLanguage() {
         let vc = LanguageSelectViewController(core: core, selectedLanguage: Settings.upLanguage, completion: { language in
@@ -208,6 +228,17 @@ class MainViewController: BaseViewController {
     
     @IBAction func pressCameraButton(_ sender: Any) {
         
+    }
+    
+    @IBAction func pressMicrophoneButton(_ sender: Any) {
+        if isRecording {
+            microphoneButton.normalBackgroundColor = UIColor.Blue.DeepSkyBlue
+            stopAudio()
+        } else {
+            microphoneButton.normalBackgroundColor = UIColor.Green.Lima
+            recordAudio()
+        }
+        isRecording = !isRecording
     }
     
     @IBAction func pressSettingsButton(_ sender: Any) {
@@ -344,7 +375,8 @@ extension MainViewController: UITextViewDelegate {
             }
         } else {
             upDotsView.isHidden = false
-            SwiftGoogleTranslate.shared.translate(textView.text, Settings.upLanguage.language, Settings.downLanguage.language) { [weak self] (result, error) in
+            let textToTranslate = textView.text
+            SwiftGoogleTranslate.shared.translate(textToTranslate!, Settings.upLanguage.language, Settings.downLanguage.language) { [weak self] (result, error) in
                 DispatchQueue.main.async {
                     guard let `self` = self else { return }
                     if let error = error {
@@ -375,4 +407,88 @@ extension MainViewController: UITextViewDelegate {
         textContainerInset = UIEdgeInsets.zero
         textContainer.lineFragmentPadding = 0
     }
+}
+
+extension MainViewController: AudioControllerDelegate {
+    
+    func recordAudio() {
+      let audioSession = AVAudioSession.sharedInstance()
+      do {
+          try audioSession.setCategory(AVAudioSession.Category.record)
+      } catch {
+
+      }
+      audioData = NSMutableData()
+      _ = AudioController.sharedInstance.prepare(specifiedSampleRate: SAMPLE_RATE)
+      SpeechRecognitionService.sharedInstance.sampleRate = SAMPLE_RATE
+      _ = AudioController.sharedInstance.start()
+    }
+
+    func stopAudio() {
+        Settings.upLanguage = Settings.languages.filter { $0.language == "ru" }.first!
+        updateUpLanguage()
+        Settings.upLanguage = Settings.languages.filter { $0.language == "en" }.first!
+        updateDownLanguage()
+        
+        if let lastRecognizedResult = lastRecognizedResult,
+            let alternative = lastRecognizedResult.alternativesArray.firstObject as? SpeechRecognitionAlternative? {
+            
+            downTextView.text = alternative?.transcript
+            hidePlaceholderLabels()
+            translate(textView: downTextView)
+        }
+        
+        _ = AudioController.sharedInstance.stop()
+        SpeechRecognitionService.sharedInstance.stopStreaming()
+    }
+    
+    func processSampleData(_ data: Data) -> Void {
+        audioData.append(data)
+
+        // We recommend sending samples in 100ms chunks
+        let chunkSize : Int /* bytes/chunk */ = Int(0.1 /* seconds/chunk */
+          * Double(SAMPLE_RATE) /* samples/second */
+          * 2 /* bytes/sample */);
+
+        if (audioData.length > chunkSize) {
+          SpeechRecognitionService.sharedInstance.streamAudioData(audioData,
+                                                                  completion:
+            { [weak self] (response, error) in
+                guard let `self` = self else {
+                    return
+                }
+                
+                if let error = error {
+                    print(error.localizedDescription)
+                } else if let response = response {
+                    var finished = false
+//                    print(response)
+                    for result in response.resultsArray! {
+                        if let result = result as? StreamingRecognitionResult {
+                            if result.isFinal {
+                                self.lastRecognizedResult = result
+                                finished = true
+                            }
+                        }
+                    }
+                    print(response.description)
+                    if finished {
+//                        self.lastRecognizedSpeechData = response.data()
+                        self.stopAudio()
+                    }
+                }
+          })
+          self.audioData = NSMutableData()
+        }
+    }
+}
+
+struct SpeechTranslation: Codable {
+    struct Results: Codable {
+        struct Alternatives: Codable {
+            var transcript: String
+        }
+        var alternatives: Alternatives
+    }
+    var results: Results
 }

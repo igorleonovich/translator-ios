@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -305,6 +305,8 @@
 		0BCC35FA240F8A0C00C7F4E5 /* LanguageSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCC35F9240F8A0C00C7F4E5 /* LanguageSelectCell.swift */; };
 		0BCC35FE24100AAD00C7F4E5 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCC35FD24100AAD00C7F4E5 /* Device.swift */; };
 		0BCC360024115A5800C7F4E5 /* DotsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCC35FF24115A5800C7F4E5 /* DotsLoader.swift */; };
+		0BCC36032416891000C7F4E5 /* SpeechRecognitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCC36022416890F00C7F4E5 /* SpeechRecognitionService.swift */; };
+		0BCC360524168FD600C7F4E5 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCC360424168FD400C7F4E5 /* AudioController.swift */; };
 		0D537DC38426025B3D6297C5 /* Pods_Translator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD843D5FA36A96DB06F1ADF /* Pods_Translator.framework */; };
 /* End PBXBuildFile section */
 
@@ -609,6 +611,8 @@
 		0BCC35F9240F8A0C00C7F4E5 /* LanguageSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectCell.swift; sourceTree = "<group>"; };
 		0BCC35FD24100AAD00C7F4E5 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		0BCC35FF24115A5800C7F4E5 /* DotsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsLoader.swift; sourceTree = "<group>"; };
+		0BCC36022416890F00C7F4E5 /* SpeechRecognitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognitionService.swift; sourceTree = "<group>"; };
+		0BCC360424168FD400C7F4E5 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		303CFFA7FCB8F811455986A6 /* Pods-Translator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translator.debug.xcconfig"; path = "Target Support Files/Pods-Translator/Pods-Translator.debug.xcconfig"; sourceTree = "<group>"; };
 		4BD843D5FA36A96DB06F1ADF /* Pods_Translator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Translator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD254710EE1F9DF8B86CC33 /* Pods-Translator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translator.release.xcconfig"; path = "Target Support Files/Pods-Translator/Pods-Translator.release.xcconfig"; sourceTree = "<group>"; };
@@ -657,6 +661,7 @@
 		0B3F2A6B2407DA1700BCAC88 /* Translator */ = {
 			isa = PBXGroup;
 			children = (
+				0BCC3601241688EB00C7F4E5 /* Tools */,
 				0BCC35FC24100A9B00C7F4E5 /* Utils */,
 				0BCC35F1240EB78F00C7F4E5 /* Core */,
 				0BCC33EB240EAAC800C7F4E5 /* Resources */,
@@ -1127,6 +1132,15 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		0BCC3601241688EB00C7F4E5 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				0BCC36022416890F00C7F4E5 /* SpeechRecognitionService.swift */,
+				0BCC360424168FD400C7F4E5 /* AudioController.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 		6550BF414D93CE6A00194ED3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1155,6 +1169,7 @@
 				0B3F2A652407DA1700BCAC88 /* Sources */,
 				0B3F2A662407DA1700BCAC88 /* Frameworks */,
 				0B3F2A672407DA1700BCAC88 /* Resources */,
+				46D5328CCFD871F3CBF5D3EE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1492,6 +1507,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		46D5328CCFD871F3CBF5D3EE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Translator/Pods-Translator-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Translator/Pods-Translator-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Translator/Pods-Translator-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1516,6 +1548,7 @@
 				0B7408BF24085ACA00ECC102 /* MDVTabbableViewController.swift in Sources */,
 				0B0D5F68240E80F30052A3E4 /* String+Extensions.swift in Sources */,
 				0B7408BE24085ACA00ECC102 /* MDVTabBarItemable.swift in Sources */,
+				0BCC36032416891000C7F4E5 /* SpeechRecognitionService.swift in Sources */,
 				0BCC35FA240F8A0C00C7F4E5 /* LanguageSelectCell.swift in Sources */,
 				0B3F2A6F2407DA1700BCAC88 /* SceneDelegate.swift in Sources */,
 				0B74085524080D4A00ECC102 /* TabBarController.swift in Sources */,
@@ -1535,6 +1568,7 @@
 				0B74085924080D6200ECC102 /* SpeechTranslationViewController.swift in Sources */,
 				0B7408BB24085ACA00ECC102 /* MDVTabBarDataSource+Delegate.swift in Sources */,
 				0B31E50C240D3C5B0080B0AE /* UIColor+Extensions.swift in Sources */,
+				0BCC360524168FD600C7F4E5 /* AudioController.swift in Sources */,
 				0B7408B824085ACA00ECC102 /* MDVUnderlineAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1673,7 +1707,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 9TZZKGNZ6W;
 				INFOPLIST_FILE = Translator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1694,7 +1728,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 9TZZKGNZ6W;
 				INFOPLIST_FILE = Translator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
