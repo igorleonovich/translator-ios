@@ -11,6 +11,7 @@ import Foundation
 fileprivate let badChars = CharacterSet.alphanumerics.inverted
 
 extension String {
+    
     var uppercasingFirst: String {
         return prefix(1).uppercased() + dropFirst()
     }

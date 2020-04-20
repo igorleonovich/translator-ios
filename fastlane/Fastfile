@@ -11,8 +11,8 @@ platform :ios do
 
         firebase_app_distribution(
             app: "1:990997999049:ios:ba4ca68e1c4338abc00c18",
-            testers: "igorlnvch@gmail.com, alexandr.mihalkevich@gmail.com",
-            release_notes: "Add speech recognition service"
+            testers: "igorlnvch@gmail.com, alexandr.mihalkevich@gmail.com, translateskeo@gmail.com",
+            release_notes: "Small refactor. Update libraries. More big updates very soon"
         )
     end
 end

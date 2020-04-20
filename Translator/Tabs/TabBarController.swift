@@ -18,13 +18,14 @@ class TabBarController: MDVTabBarController {
 }
 
 extension TabBarController: MDVTabBarControllerDelegate {
+    
     func tabBar(_ tabBarController: MDVTabBarController, didSelectIndex index: Int) {
         
     }
 }
 
-
 extension TabBarController: MDVTabBarControllerDataSource {
+    
     func tabBarControllerInitialIndex() -> Int {
         return 3
     }

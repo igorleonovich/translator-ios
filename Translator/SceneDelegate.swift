@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
         window?.windowScene = windowScene
         
-        SwiftGoogleTranslate.shared.start(with: "AIzaSyB3n5JRdcYrek-TYbKdBhhwIaGkSjSc55s")
+        SwiftGoogleTranslate.shared.start(with: Constants.GoogleAPIKey)
         
         Language.updateFromServer()
     }
