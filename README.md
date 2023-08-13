@@ -1,3 +1,3 @@
-# translator-ios
+# Translator (iOS) (Concept)
 
-iOS interface of Google Translate API for text
+An iOS interface of Google Translate API for text
